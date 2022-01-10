@@ -2,7 +2,6 @@
   🖥 Trilha BackEnd
 </h1>
 
----
 
 ### Objetivo
 
@@ -76,3 +75,36 @@ Quinta – O software orientado a objeto é reutilizável (podemos usar o objeto
 
 Pesquisa das vantagens feita em: [apexensino.com.br](https://apexensino.com.br/o-que-e-programacao-orientada-objetos/)
 
+---
+
+<h2>
+   Desafio 03
+</h2>
+
+###Objetivo
+
+Entender o básico a respeito do protocolo HTTP, REST e Web API.
+
+####O que é o protocolo de comunicação HTTP e como ele funciona;
+
+HTTP: HyperText Transfer Protocol(Protocolo de Transferência de HyperTexto) Protocolo é um conjunto de regras ele serve para transferência de HyperTextos que são textos com audios, videos, imagens, links para outros textos, etc, usamos frequentemente quando acessamos uma página web, o que acontece são trocas de mensagens modelo cliente-servidor, o cliente/browser faz um pedido/request informando uma ação por exemplo 'https://www.google.com' estamos usando uma URL para o servidor que devolve uma resposta/response do pedido que no nosso caso é a página do google.
+
+####O que é REST, e qual é a sua relação com o protocolo HTTP;
+
+REST: Representation State Transfer(Transferência Representacional de Estado) trata-se de um conjunto de princípios e definições necessários para a criação de um projeto com interfaces bem definidas, usa XML ou JSON para se comunicar, faz suas chamadas via URL, REST utiliza o HTTP como protocolo de comunicação oficial, o HTTP permite criar, atualizar, pesquisar, executar e remover operações.
+
+####O que é Web API, e qual é a sua relação com REST;
+
+APIs: Application Programming Interface(Interfaces de Programação de Aplicativos) são construções disponibilizadas em liguagens de programação para permitir que os desenvolvedores criem funcionalidades complexas com mais facilidade. Abstraindo códigos mais complexos, fornecendo uma sintaxe mais fácil de usar em seu lugar[developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction). A arquitetura REST por ser mais leve significa que pode ser desenvolvida com menor esforço, tornando-os mais fáceis de serem adotados como parte de implementação de APIs.
+
+####Métodos HTTP:
+
+GET: Solicita a representação de um recurso específico, retornam apenas dados.
+
+POST: É utilizado para submeter uma entidade a um recurso específico, frequentemente causando uma mudança no estado do recurso.
+
+PUT: Substitui todas as atuais representações do recurso de destino pela da requisição enviada.
+
+DELETE: Deleta um recurso específico.
+
+PATCH: É utilizado para aplicar modificações parciais em um recurso.
