@@ -112,3 +112,59 @@ PATCH: É utilizado para aplicar modificações parciais em um recurso.
 #### O que é Swagger?
 
 Um ponto essencial em qualquer projeto é a documentação, algumas vezes negligenciado, uma aplicação que não tenha uma documentação pode dificultar o trabalho dos desenvolvedores e o entendimento por parte dos usuários de como a aplicação funciona. Para criar boas documentações a equipe pode fazer uso de ferrementas, uma delas é o Swagger uma aplicação opensource compsoto por diversas ferramentas que auxilia os desenvolvedores a criar, definir, documentar e consumir uma API, ele conta com ferramentas para definir uma estrutura, criar o esqueleto da API e testa sem que aconteça qualquer tipo de perda na aplicação.
+
+---
+
+<h2>
+  Desafio 4
+</h2>
+
+---
+
+### Objetivo
+
+Entender o papel da camada de persistência, a abstração da linguagem dos bancos de dados criada pelas ferramentas de ORM
+e a partir desse entendimento ser capaz de se comunicar com qualquer tipo de banco de dados independendo da sua
+linguagem nativa.
+
+#### O que é JDBC?
+
+É uma API construida na linguagem Java que possibilita acessar um banco de dados através de drivers, composta por dois
+componentes centrais, o primeiro formado pelos pacotes **java.sql** e **javax.sql** incluidos no JavaSE, que fornecem
+classes e interfaces para o desenvolvimento de software que acessem qualquer fonte de dados, o segundo componente são os
+drivers, responsáveis pela conexão e interação com um banco de dados específico, podemos considerar os drivers como um
+tradutor das mensagens binárias trocadas com um protocolo de um SGBD.
+
+
+#### O que é ORM, cite 3 exemplos?
+
+ORM (Object Relational Mapper) ferramenta utilizada com o propósito de unir o mundo orientado a objetos e o mundo
+relacional, quando trabalhamos com aplicações orientadas a objetos, para armazenar as informações nos banco de dados
+relacionais encontramos um problema chamado impedância objeto-relacional devido a diferença entre os dois mundos, no
+mundo relacional utilizamos de tabelas que representam o modelo da vida real, no mundo orientado a objetos fazemos o uso
+de diversos elementos como classes e interfaces por exemplo. ORM define como os dados serão mapeados, acessados e
+gravados.
+
+###### Exemplos de ORMs:
+
+- Hibernate
+- EclipseLink
+- TopLink
+
+#### O que é JPA e qual a sua relação com os ORM's?
+
+É uma API padrão do Java que dita como frameworks ORM devem ser implementados para prover a persistência de dados em
+bancos relacionais, tem como base a JDBC abstraindo detalhes dessa API para simplificar o dia a dia do programador. Para
+facilitar o uso de outras bibliotecas nos projetos foi criada a JPA padronizando o modelo de persistência, os ORMs são a
+ponte entre o mundo da 'orientação a Objetos' com o 'relacional' do banco de dados e a JPA padroniza esse mapeamento
+entre os mundos, facilitando o uso de outras bibliotecas por meio da troca dos JARs.
+
+#### O que é Spring Data?
+
+É um projeto da SpringSource com proposta de unificar e facilitar o acesso a diferentes tecnologias de armazenamento de
+dados, é um projeto que contém subprojetos que são específicos para um determinado banco de dados, possue entre seus
+recursos, repositório poderoso e abstração de mapeamento de objetos personalizados, derivação de consulta dinâmica a
+partir de nomes de métodos de repositórios entre outros. O spring Data JPA é um módulo do Spring Data que torna mais
+fácil implementar repositórios baseados em JPA, reduzindo o esforço para o que é realmente necessário, o Spring fornece
+a implementação automaticamente.
+
