@@ -32,7 +32,9 @@ São ferramentas utilizadas para gerenciar e rastrear toda evolução ao longo d
 
 Pesquisa dos exemplos feita em - [gaea.com.br](https://gaea.com.br/conheca-5-ferramentas-de-controle-de-versao-de-software/)
 
-##Desafio 02
+<h2>
+  Desafio 02
+</h2>
 
 
 ### Objetivo
