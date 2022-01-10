@@ -4,7 +4,7 @@
 
 ---
 
-## Objetivo
+### Objetivo
 
 Esse é o início da minha jornada junto com a NTT DATA por meio de desafios que tem a missão de capacitar nos pontos de vista técnico e profissional para se tornar um desenvolvedor.
 
@@ -31,6 +31,8 @@ São ferramentas utilizadas para gerenciar e rastrear toda evolução ao longo d
 - Git - é a ferramenta mais popular atualmente, um dos motivos é por ser open source e o uso da plataforma de hospedagem de códigos GitHub.
 
 Pesquisa dos exemplos feita em - [gaea.com.br](https://gaea.com.br/conheca-5-ferramentas-de-controle-de-versao-de-software/)
+
+---
 
 ##Desafio 02
 
