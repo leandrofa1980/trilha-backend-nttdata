@@ -7,7 +7,7 @@ public class Entry {
     private String description;
     private String type;
     private String amount;
-    private String data;
+    private String date;
     private boolean paid;
     private Long categoryId;
 
@@ -20,7 +20,7 @@ public class Entry {
         this.description = description;
         this.type = type;
         this.amount = amount;
-        this.data = data;
+        this.date = date;
         this.paid = paid;
         this.categoryId = categoryId;
     }
@@ -65,12 +65,12 @@ public class Entry {
         this.amount = amount;
     }
 
-    public String getData() {
-        return data;
+    public String getDate() {
+        return date;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDate(String data) {
+        this.date = data;
     }
 
     public boolean getPaid() {
@@ -96,7 +96,7 @@ public class Entry {
                 ", description='" + description + '\'' +
                 ", type='" + type + '\'' +
                 ", amount='" + amount + '\'' +
-                ", data='" + data + '\'' +
+                ", data='" + date + '\'' +
                 ", paid=" + paid + '\'' +
                 ", categoryId=" + categoryId;
     }
