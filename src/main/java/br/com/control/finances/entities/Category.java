@@ -1,10 +1,24 @@
 package br.com.control.finances.entities;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Table(name = "CATEGORIES")
+@Entity
 public class Category {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, length = 50)
     private  String name;
+    @Column(nullable = false, length = 100)
     private  String description;
+/*
+
+    @ManyToOne
+    private List<Entry> entry;
+*/
 
     public Category() {
     }

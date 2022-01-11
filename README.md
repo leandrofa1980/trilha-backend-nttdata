@@ -119,8 +119,6 @@ Um ponto essencial em qualquer projeto é a documentação, algumas vezes neglig
   Desafio 4
 </h2>
 
----
-
 ### Objetivo
 
 Entender o papel da camada de persistência, a abstração da linguagem dos bancos de dados criada pelas ferramentas de ORM
@@ -167,4 +165,30 @@ recursos, repositório poderoso e abstração de mapeamento de objetos personali
 partir de nomes de métodos de repositórios entre outros. O spring Data JPA é um módulo do Spring Data que torna mais
 fácil implementar repositórios baseados em JPA, reduzindo o esforço para o que é realmente necessário, o Spring fornece
 a implementação automaticamente.
+
+#### O que caracteriza um projeto "CRUD básico"?
+
+CRUD é o acrônimo da expressão em inglês Create(Criar), Read(Ler/Consultar), Update(Atualizar) e Delete(Deletar/Excluir)
+, quatro operações básicas usadas em banco de dados relacionais que caracterizam um projeto CRUD, o paradigma CRUD é
+comum na construção de aplicativos web, porque fornece uma estrutura memorável para lembrar os desenvolvedores de como
+contruir modelos completos e utilizáveis.
+
+- Create - É uma função que adiciona um nova entrada de dados no recurso correspondente.
+- Read - É uma função chamada que simplesmente recupera o recurso e exibe o resultado.
+- Update - Função que é usada quando precisamos alterar os valores das informações.
+- Delete - Chamamos essa função quando precisamos remover valores do recurso.
+
+Em um ambiente REST geralmente corresponde aos métodos HTTP - POST, GET, PUT, DELETE, respectivamente.
+
+🖥 Referências:
+- [www.alura.com.br/artigos/conhecendo-o-jdbc](https://www.alura.com.br/artigos/conhecendo-o-jdbc?gclid=Cj0KCQiAt8WOBhDbARIsANQLp97hNsa6bYXTH3Jcf9nfiLKZeNt_HX_pd5gKiDZ5YVzoOAMiRZG42MQaAtuqEALw_wcB)
+- [www.devmedia.com.br/aprendendo-java-com-jdbc](https://www.devmedia.com.br/aprendendo-java-com-jdbc/29116)
+- [www.devmedia.com.br/orm-object-relational-mapper](https://www.devmedia.com.br/orm-object-relational-mapper/19056)
+- [www.treinaweb.com.br/blog/o-que-e-orm](https://www.treinaweb.com.br/blog/o-que-e-orm)
+- [www.devmedia.com.br/introducao-a-jpa-java-persistence-api](https://www.devmedia.com.br/introducao-a-jpa-java-persistence-api/28173)
+- [www.alura.com.br/conteudo/persistencia-jpa-introducao-hibernate](https://www.alura.com.br/conteudo/persistencia-jpa-introducao-hibernate)
+- [www.spring.io/projects/spring-data](https://spring.io/projects/spring-data)
+- [www.spring.io/projects/spring-data-jpa](https://spring.io/projects/spring-data-jpa)
+- [www.codecademy.com/article/what-is-crud](https://www.codecademy.com/article/what-is-crud)
+- [www.stackoverflow.com](https://pt.stackoverflow.com/questions/359961/o-que-caracteriza-um-projeto-crud-b%C3%A1sico)
 

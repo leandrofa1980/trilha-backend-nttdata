@@ -1,6 +1,7 @@
 package br.com.control.finances.controller;
 
 import br.com.control.finances.entities.Entry;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/entries")
 public class EntryController {
-    
+
     private List<Entry> list = new ArrayList<>();
     
     @GetMapping("/read")

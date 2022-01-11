@@ -1,15 +1,31 @@
 package br.com.control.finances.entities;
 
+import javax.persistence.*;
+
+@Table(name = "ENTRIES")
+@Entity
 public class Entry {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, length = 50)
     private String name;
+    @Column(nullable = false, length = 100)
     private String description;
+    @Column(nullable = false, length = 15)
     private String type;
+    @Column(nullable = false)
     private String amount;
+    @Column(nullable = false, length = 10)
     private String date;
+    @Column(nullable = false)
     private boolean paid;
+    @Column(nullable = false)
     private Long categoryId;
+
+ /*   @OneToMany
+    private Category category;*/
 
     public Entry() {
     }
