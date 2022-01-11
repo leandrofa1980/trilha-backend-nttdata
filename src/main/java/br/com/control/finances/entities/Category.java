@@ -3,6 +3,7 @@ package br.com.control.finances.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,7 @@ public class Category {
     @Column(nullable = false, length = 100)
     private  String description;
 
-    @OneToMany(mappedBy = "categoryId")
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Entry> entries;
 
     public Category() {
@@ -51,6 +52,14 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Entry> getEntries() {
+        return entries;
+    }
+
+    public void setEntries(List<Entry> entries) {
+        this.entries = entries;
     }
 
     @Override

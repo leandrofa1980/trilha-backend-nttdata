@@ -47,6 +47,7 @@ public class EntryController {
                     record.setAmount(entry.getAmount());
                     record.setDate(entry.getDate());
                     record.setPaid(entry.getPaid());
+                    record.setCategoryId(entry.getCategoryId());
                     Entry update = entryRepository.save(record);
                     return ResponseEntity.ok().body(update);})
                 .orElse(ResponseEntity.notFound().build());
