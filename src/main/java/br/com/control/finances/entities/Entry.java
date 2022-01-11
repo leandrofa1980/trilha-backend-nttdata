@@ -1,36 +1,45 @@
 package br.com.control.finances.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-@Table(name = "ENTRIES")
 @Entity
+@Table(name = "ENTRIES")
 public class Entry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     @Column(nullable = false, length = 50)
     private String name;
+    @NotNull
     @Column(nullable = false, length = 100)
     private String description;
+    @NotNull
     @Column(nullable = false, length = 15)
     private String type;
+    @NotNull
     @Column(nullable = false)
     private String amount;
+    @NotNull
     @Column(nullable = false, length = 10)
     private String date;
+    @NotNull
     @Column(nullable = false)
     private boolean paid;
+    @NotNull
     @Column(nullable = false)
     private Long categoryId;
 
- /*   @OneToMany
-    private Category category;*/
+    @ManyToOne
+    @JoinColumn(name = "category")
+    private Category category;
 
     public Entry() {
     }
 
-    public Entry(Long id, String name, String description, String type, String amount, String data, boolean paid, Long categoryId) {
+    public Entry(Long id, String name, String description, String type, String amount, String date, boolean paid, Long categoryId, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -39,6 +48,7 @@ public class Entry {
         this.date = date;
         this.paid = paid;
         this.categoryId = categoryId;
+        this.category = category;
     }
 
     public Long getId() {
@@ -85,8 +95,8 @@ public class Entry {
         return date;
     }
 
-    public void setDate(String data) {
-        this.date = data;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public boolean getPaid() {
@@ -103,6 +113,14 @@ public class Entry {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

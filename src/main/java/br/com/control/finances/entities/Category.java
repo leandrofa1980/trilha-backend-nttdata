@@ -1,10 +1,12 @@
 package br.com.control.finances.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
-@Table(name = "CATEGORIES")
 @Entity
+@Table(name = "CATEGORIES")
 public class Category {
 
     @Id
@@ -14,11 +16,9 @@ public class Category {
     private  String name;
     @Column(nullable = false, length = 100)
     private  String description;
-/*
 
-    @ManyToOne
-    private List<Entry> entry;
-*/
+    @OneToMany(mappedBy = "categoryId")
+    private List<Entry> entries;
 
     public Category() {
     }
