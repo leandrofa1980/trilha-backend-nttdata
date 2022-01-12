@@ -1,6 +1,7 @@
 package br.com.control.finances.controller;
 
 import br.com.control.finances.entities.Entry;
+import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,28 +19,32 @@ public class EntryController {
     @Autowired
     private EntryRepository entryRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     /*private List<Entry> list = new ArrayList<>();*/
     
-    @GetMapping("/read")
+  /*  @GetMapping("/read")
     public List<Entry> read(){
         return entryRepository.findAll();
     }
-
+*/
     @GetMapping("/read/{id}")
     public Entry readById(@PathVariable("id") Long id){
         return entryRepository.findById(id).orElseThrow();
     }
 
-    @GetMapping("/read/{paid}")
-    public List<Entry> readPaid(@RequestParam boolean paid){
+    @GetMapping("/read")
+    public List<Entry> readPaid(@RequestParam(required = false) Boolean paid) {
         return entryRepository.findAll();
     }
     
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Entry createEntry(@RequestBody Entry entry) {
-        entry.getCategory().getId();
-        if ()
+        if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
+
+        }
 
         return entryRepository.save(entry);
     }
