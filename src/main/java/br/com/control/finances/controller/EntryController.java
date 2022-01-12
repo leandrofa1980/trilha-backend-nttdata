@@ -24,23 +24,6 @@ public class EntryController  extends RuntimeException{
     @Autowired
     private CategoryRepository categoryRepository;
 
-<<<<<<< HEAD
-    /*private List<Entry> list = new ArrayList<>();*/
-    
-  /*  @GetMapping("/read")
-    public List<Entry> read(){
-        return entryRepository.findAll();
-    }
-*/
-    @GetMapping("/read/{id}")
-    public Entry readById(@PathVariable("id") Long id){
-        return entryRepository.findById(id).orElseThrow();
-    }
-
-    @GetMapping("/read")
-    public List<Entry> readPaid(@RequestParam(required = false) Boolean paid) {
-        return entryRepository.findAll();
-=======
     @GetMapping("/read")
     public List<Entry> read(){
         return entryRepository.findAll();
@@ -60,19 +43,10 @@ public class EntryController  extends RuntimeException{
     @GetMapping("/read/{id}")
     public Entry readById(@PathVariable("id") Long id){
         return entryRepository.findById(id).orElseThrow();
->>>>>>> desafio4
     }
-    
+
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-<<<<<<< HEAD
-    public Entry createEntry(@RequestBody Entry entry) {
-        if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
-
-        }
-
-        return entryRepository.save(entry);
-=======
     public Entry createEntry(@RequestBody Entry entry) throws Exception {
        if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
            return entryRepository.save(entry);
@@ -80,7 +54,6 @@ public class EntryController  extends RuntimeException{
        else {
            throw new Exception("erro");
        }
->>>>>>> desafio4
     }
 
     @PutMapping("/update/{id}")
@@ -94,10 +67,6 @@ public class EntryController  extends RuntimeException{
                     record.setAmount(entry.getAmount());
                     record.setDate(entry.getDate());
                     record.setPaid(entry.getPaid());
-<<<<<<< HEAD
-                    record.setPaid(entry.getPaid());
-=======
->>>>>>> desafio4
                     Entry update = entryRepository.save(record);
                     return ResponseEntity.ok().body(update);})
                 .orElse(ResponseEntity.notFound().build());
