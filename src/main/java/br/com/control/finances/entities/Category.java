@@ -1,9 +1,9 @@
 package br.com.control.finances.entities;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -18,6 +18,7 @@ public class Category {
     @Column(nullable = false, length = 100)
     private  String description;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Entry> entries;
 

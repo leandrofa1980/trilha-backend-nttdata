@@ -14,12 +14,9 @@ import java.util.Optional;
 @RequestMapping("/categories")
 public class CategoryController {
 
+    @Autowired
     private CategoryRepository categoryRepository;
 
-    @Autowired
-    public CategoryController(CategoryRepository repository) {
-        this.categoryRepository = repository;
-    }
 
 /*    private List<Category> list = new ArrayList<>();*/
 
@@ -29,8 +26,8 @@ public class CategoryController {
     }
 
     @GetMapping("/read/{id}")
-    public Optional<Category> readById(@PathVariable("id") Long id){
-        return categoryRepository.findById(id);
+    public Category readById(@PathVariable("id") Long id){
+        return categoryRepository.findById(id).orElseThrow();
     }
 
     @PostMapping("/create")

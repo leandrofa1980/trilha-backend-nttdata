@@ -26,13 +26,21 @@ public class EntryController {
     }
 
     @GetMapping("/read/{id}")
-    public Optional<Entry> readById(@PathVariable("id") Long id){
-        return entryRepository.findById(id);
+    public Entry readById(@PathVariable("id") Long id){
+        return entryRepository.findById(id).orElseThrow();
+    }
+
+    @GetMapping("/read/{paid}")
+    public List<Entry> readPaid(@RequestParam boolean paid){
+        return entryRepository.findAll();
     }
     
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Entry createEntry(@RequestBody Entry entry) {
+        entry.getCategory().getId();
+        if ()
+
         return entryRepository.save(entry);
     }
 
@@ -47,7 +55,7 @@ public class EntryController {
                     record.setAmount(entry.getAmount());
                     record.setDate(entry.getDate());
                     record.setPaid(entry.getPaid());
-                    record.setCategoryId(entry.getCategoryId());
+                    record.setPaid(entry.getPaid());
                     Entry update = entryRepository.save(record);
                     return ResponseEntity.ok().body(update);})
                 .orElse(ResponseEntity.notFound().build());
