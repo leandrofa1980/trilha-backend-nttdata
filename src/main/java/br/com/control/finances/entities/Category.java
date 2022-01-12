@@ -18,6 +18,7 @@ public class Category {
     @Column(nullable = false, length = 100)
     private  String description;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Entry> entries;
 

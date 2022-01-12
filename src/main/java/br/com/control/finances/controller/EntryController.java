@@ -5,6 +5,7 @@ import br.com.control.finances.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,22 +13,33 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Repository
 @RequestMapping("/entries")
 public class EntryController {
 
     @Autowired
     private EntryRepository entryRepository;
 
+    private CategoryController categoryController;
+
     /*private List<Entry> list = new ArrayList<>();*/
     
     @GetMapping("/read")
-    public List<Entry> read(){
-        return entryRepository.findAll();
+    public List<Entry> read(@RequestParam(required = false) Boolean paid){
+        if (paid == null){
+            entryRepository.findAll();
+        }
+        if (paid == true){
+            return entryRepository.findByPaid(true);
+        }
+        else {
+            return entryRepository.findByPaid(false);
+        }
     }
 
     @GetMapping("/read/{id}")
-    public Optional<Entry> readById(@PathVariable("id") Long id){
-        return entryRepository.findById(id);
+    public Entry readById(@PathVariable("id") Long id){
+        return entryRepository.findById(id).orElseThrow();
     }
     
     @PostMapping("/create")

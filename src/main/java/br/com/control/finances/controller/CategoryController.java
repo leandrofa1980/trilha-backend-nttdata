@@ -5,22 +5,21 @@ import br.com.control.finances.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Repository
 @RequestMapping("/categories")
 public class CategoryController {
 
+    @Autowired
     private CategoryRepository categoryRepository;
 
-    @Autowired
-    public CategoryController(CategoryRepository repository) {
-        this.categoryRepository = repository;
-    }
-
+    private EntryController entryController;
 /*    private List<Category> list = new ArrayList<>();*/
 
     @GetMapping("/read")
