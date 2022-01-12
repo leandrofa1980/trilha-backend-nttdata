@@ -28,16 +28,17 @@ public class EntryController  extends RuntimeException{
     public List<Entry> read(){
         return entryRepository.findAll();
     }
-
-    @GetMapping("/read/paid")
+/*
+    @GetMapping("/read")
     public List<Entry> readPaid(@RequestParam(required = false) Boolean paid){
             if (paid != null) {
                 entryRepository.findByPaid(true);
-            } else {
+            }
+            if (paid == false){
                 entryRepository.findByPaid(false);
             }
         return entryRepository.findAll();
-    }
+    }*/
 
     @GetMapping("/read/{id}")
     public Entry readById(@PathVariable("id") Long id){
@@ -53,7 +54,6 @@ public class EntryController  extends RuntimeException{
        else {
            throw new Exception("erro");
        }
-
     }
 
     @PutMapping("/update/{id}")
