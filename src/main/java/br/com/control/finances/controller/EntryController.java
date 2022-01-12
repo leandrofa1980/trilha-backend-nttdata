@@ -1,6 +1,7 @@
 package br.com.control.finances.controller;
 
 import br.com.control.finances.entities.Entry;
+import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,26 +16,27 @@ import java.util.Optional;
 @RestController
 @Repository
 @RequestMapping("/entries")
-public class EntryController {
+public class EntryController  extends RuntimeException{
 
     @Autowired
     private EntryRepository entryRepository;
 
-    private CategoryController categoryController;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-    /*private List<Entry> list = new ArrayList<>();*/
-    
     @GetMapping("/read")
-    public List<Entry> read(@RequestParam(required = false) Boolean paid){
-        if (paid == null){
-            entryRepository.findAll();
-        }
-        if (paid == true){
-            return entryRepository.findByPaid(true);
-        }
-        else {
-            return entryRepository.findByPaid(false);
-        }
+    public List<Entry> read(){
+        return entryRepository.findAll();
+    }
+
+    @GetMapping("/read/paid")
+    public List<Entry> readPaid(@RequestParam(required = false) Boolean paid){
+            if (paid != null) {
+                entryRepository.findByPaid(true);
+            } else {
+                entryRepository.findByPaid(false);
+            }
+        return entryRepository.findAll();
     }
 
     @GetMapping("/read/{id}")
@@ -44,8 +46,14 @@ public class EntryController {
     
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public Entry createEntry(@RequestBody Entry entry) {
-        return entryRepository.save(entry);
+    public Entry createEntry(@RequestBody Entry entry) throws Exception {
+       if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
+           return entryRepository.save(entry);
+       }
+       else {
+           throw new Exception("erro");
+       }
+
     }
 
     @PutMapping("/update/{id}")
@@ -59,7 +67,6 @@ public class EntryController {
                     record.setAmount(entry.getAmount());
                     record.setDate(entry.getDate());
                     record.setPaid(entry.getPaid());
-                    record.setCategoryId(entry.getCategoryId());
                     Entry update = entryRepository.save(record);
                     return ResponseEntity.ok().body(update);})
                 .orElse(ResponseEntity.notFound().build());

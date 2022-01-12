@@ -22,8 +22,6 @@ public class Entry {
     private String date;
     @Column(nullable = false)
     private boolean paid;
-    @Column(nullable = false)
-    private Long categoryId;
 
     @ManyToOne
     @JoinColumn(name = "category")
@@ -32,7 +30,7 @@ public class Entry {
     public Entry() {
     }
 
-    public Entry(Long id, String name, String description, String type, String amount, String date, boolean paid, Long categoryId, Category category) {
+    public Entry(Long id, String name, String description, String type, String amount, String date, boolean paid, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -40,7 +38,6 @@ public class Entry {
         this.amount = amount;
         this.date = date;
         this.paid = paid;
-        this.categoryId = categoryId;
         this.category = category;
     }
 
@@ -100,31 +97,11 @@ public class Entry {
         this.paid = paid;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
-
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    @Override
-    public String toString() {
-        return  "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", type='" + type + '\'' +
-                ", amount='" + amount + '\'' +
-                ", data='" + date + '\'' +
-                ", paid=" + paid + '\'' +
-                ", categoryId=" + categoryId;
     }
 }

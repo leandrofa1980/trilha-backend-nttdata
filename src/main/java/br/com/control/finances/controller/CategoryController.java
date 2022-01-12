@@ -19,6 +19,7 @@ public class CategoryController {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
     private EntryController entryController;
 /*    private List<Category> list = new ArrayList<>();*/
 
@@ -28,8 +29,8 @@ public class CategoryController {
     }
 
     @GetMapping("/read/{id}")
-    public Optional<Category> readById(@PathVariable("id") Long id){
-        return categoryRepository.findById(id);
+    public Category readById(@PathVariable("id") Long id){
+        return categoryRepository.findById(id).orElseThrow();
     }
 
     @PostMapping("/create")
