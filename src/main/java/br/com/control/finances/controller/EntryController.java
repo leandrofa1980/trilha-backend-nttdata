@@ -24,21 +24,18 @@ public class EntryController  extends RuntimeException{
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @GetMapping("/read")
+   /* @GetMapping("/read")
     public List<Entry> read(){
         return entryRepository.findAll();
-    }
-/*
+    }*/
     @GetMapping("/read")
     public List<Entry> readPaid(@RequestParam(required = false) Boolean paid){
             if (paid != null) {
-                entryRepository.findByPaid(true);
+               return entryRepository.findByPaid(paid);
             }
-            if (paid == false){
-                entryRepository.findByPaid(false);
-            }
+
         return entryRepository.findAll();
-    }*/
+    }
 
     @GetMapping("/read/{id}")
     public Entry readById(@PathVariable("id") Long id){
