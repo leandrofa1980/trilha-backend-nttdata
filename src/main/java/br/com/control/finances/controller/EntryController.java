@@ -9,9 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @Repository
@@ -24,10 +23,6 @@ public class EntryController  extends RuntimeException{
     @Autowired
     private CategoryRepository categoryRepository;
 
-   /* @GetMapping("/read")
-    public List<Entry> read(){
-        return entryRepository.findAll();
-    }*/
     @GetMapping("/read")
     public List<Entry> readPaid(@RequestParam(required = false) Boolean paid){
             if (paid != null) {
