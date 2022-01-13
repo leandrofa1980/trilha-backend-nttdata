@@ -21,8 +21,7 @@ public class EntryController  extends RuntimeException{
 
     @Autowired
     private CategoryRepository categoryRepository;
-
-
+  
     @GetMapping("/read")
     public List<Entry> readPaid(@RequestParam(required = false) Boolean paid){
             if (paid != null) {
