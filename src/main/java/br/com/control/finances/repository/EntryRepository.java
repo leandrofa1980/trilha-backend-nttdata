@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface EntryRepository extends JpaRepository<Entry, Long> {
-    List<Entry> findByPaid(Boolean paid);
+    List<Entry> findByPaid(boolean paid);
 }
