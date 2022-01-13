@@ -1,9 +1,9 @@
 package br.com.control.finances.entities;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -61,12 +61,5 @@ public class Category {
 
     public void setEntries(List<Entry> entries) {
         this.entries = entries;
-    }
-
-    @Override
-    public String toString() {
-        return  "id=" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description;
     }
 }

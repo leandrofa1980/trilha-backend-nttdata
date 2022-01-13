@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @Repository
 @RequestMapping("/entries")
@@ -22,7 +21,7 @@ public class EntryController  extends RuntimeException{
 
     @Autowired
     private CategoryRepository categoryRepository;
-
+  
     @GetMapping("/read")
     public List<Entry> readPaid(@RequestParam(required = false) Boolean paid){
             if (paid != null) {
@@ -36,7 +35,7 @@ public class EntryController  extends RuntimeException{
     public Entry readById(@PathVariable("id") Long id){
         return entryRepository.findById(id).orElseThrow();
     }
-    
+
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Entry createEntry(@RequestBody Entry entry) throws Exception {

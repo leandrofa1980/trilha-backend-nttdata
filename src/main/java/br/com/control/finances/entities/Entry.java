@@ -1,7 +1,6 @@
 package br.com.control.finances.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "ENTRIES")
