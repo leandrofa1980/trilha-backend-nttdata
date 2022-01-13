@@ -62,11 +62,4 @@ public class Category {
     public void setEntries(List<Entry> entries) {
         this.entries = entries;
     }
-
-    @Override
-    public String toString() {
-        return  "id=" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description;
-    }
 }
