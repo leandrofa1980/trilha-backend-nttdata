@@ -1,8 +1,10 @@
 package br.com.control.finances.controller;
 
+import br.com.control.finances.entities.Category;
 import br.com.control.finances.entities.Entry;
 import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
+import br.com.control.finances.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +19,14 @@ import java.util.List;
 public class EntryController  extends RuntimeException{
 
     @Autowired
+    private EntryService entryService;
+
+    @Autowired
     private EntryRepository entryRepository;
 
     @Autowired
     private CategoryRepository categoryRepository;
+
 
 
     @GetMapping("/read")
@@ -38,14 +44,9 @@ public class EntryController  extends RuntimeException{
     }
 
     @PostMapping("/create")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Entry createEntry(@RequestBody Entry entry) throws Exception {
-       if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
-           return entryRepository.save(entry);
-       }
-       else {
-           throw new Exception("erro");
-       }
+    public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) {
+          Entry entrycreate = entryService.validateCategoryById();
+            return ResponseEntity.ok().body(entry);
     }
 
     @PutMapping("/update/{id}")
