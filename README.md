@@ -192,3 +192,14 @@ Em um ambiente REST geralmente corresponde aos métodos HTTP - POST, GET, PUT, D
 - [www.codecademy.com/article/what-is-crud](https://www.codecademy.com/article/what-is-crud)
 - [www.stackoverflow.com](https://pt.stackoverflow.com/questions/359961/o-que-caracteriza-um-projeto-crud-b%C3%A1sico)
 
+<h2>
+    Desafio 5
+</h2>
+
+### Objetivo
+
+Conhecer uma nova camada de uma aplicação, entender a responsabilidade de cada camada e replicar seus conceitos para cada tipo de projeto.
+
+#### Defina a responsabilidade das camadas 'entity', 'controller', 'repository' e 'service'.
+
+Como dito antes o JPA é quem dita como devemos implementar para prover a comunicação com o banco de dados, junto com ela podemos usar camadas lógicas que fazem parte do sistema e rodam no lado do servidor conversando com o lado do cliente, a camada 'controller' faz esse papel é a ligação da aplicação com o backend ela recebe requisições e responde de acordo com o comportamento do sistema, temos outras camadas e suas responsabilidades, na camada 'service' ficam as regras de negócio da aplicação, 'repository' faz a ponte com o banco de dados, com ela temos acesso aos métodos da JPA referentes as operações de CRUD, todas essas camadas conversam com a 'entity' que contém classes com atributos básicos para persistência e as anotações JPA que utilizamos para mapear nossa aplicação no banco de dados, uma entidade representa, na Orientação a Objetos, uma tabela do banco de dados, e cada atributo dessa entidade representa uma linha dessa tabela.
