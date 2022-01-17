@@ -10,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -24,50 +26,43 @@ public class EntryController  extends RuntimeException{
     @Autowired
     private EntryRepository entryRepository;
 
-    @Autowired
-    private CategoryRepository categoryRepository;
-
-
-
     @GetMapping("/read")
     public List<Entry> readPaid(@RequestParam(required = false) Boolean paid){
             if (paid != null) {
                return entryRepository.findByPaid(paid);
             }
 
-        return entryRepository.findAll();
+        return entryService.findAll();
     }
 
     @GetMapping("/read/{id}")
-    public Entry readById(@PathVariable("id") Long id){
-        return entryRepository.findById(id).orElseThrow();
+    public ResponseEntity<Entry> readById(@PathVariable("id") Long id){
+        Entry readById = entryService.findById(id);
+        return ResponseEntity.ok().body(readById);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) {
-          Entry entrycreate = entryService.validateCategoryById();
-            return ResponseEntity.ok().body(entry);
+    public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) throws Exception{
+        entry = entryService.insert(entry);
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(entry.getId())
+                .toUri();
+        return ResponseEntity.created(location).body(entry);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody Entry entry){
-        return entryRepository.findById(id)
-                .map(record -> {
-                    record.setId(entry.getId());
-                    record.setName(entry.getName());
-                    record.setDescription(entry.getDescription());
-                    record.setType(entry.getType());
-                    record.setAmount(entry.getAmount());
-                    record.setDate(entry.getDate());
-                    record.setPaid(entry.getPaid());
-                    Entry update = entryRepository.save(record);
-                    return ResponseEntity.ok().body(update);})
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<Entry> update(@PathVariable("id") Long id, @RequestBody Entry entry){
+        entry = entryService.update(id, entry);
+        return ResponseEntity.ok().body(entry);
+
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteById(@PathVariable("id") Long id){
+    public ResponseEntity<Void> deleteById(@PathVariable Long id){
         entryRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
     
 }
