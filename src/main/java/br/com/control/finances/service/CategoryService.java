@@ -14,12 +14,9 @@ public class CategoryService {
     @Autowired
     private CategoryRepository repository;
 
-<<<<<<< HEAD
-=======
     public CategoryService() {
     }
 
->>>>>>> 6a831e153880f670e590fad117892bb69034103a
     public List<Category> findAll(){
         return repository.findAll();
     }
