@@ -42,8 +42,8 @@ public class EntryController  extends RuntimeException{
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) throws Exception{
-        entry = entryService.insert(entry);
+    public ResponseEntity<Entry> createEntry(@PathVariable Long id) throws Exception{
+        Entry entry = entryService.validateCategoryById(id);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
