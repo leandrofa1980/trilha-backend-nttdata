@@ -6,6 +6,7 @@ import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,15 +37,10 @@ public class EntryService {
         return categoryRepository.findById(id);
     }
 
-    public Entry validateCategoryById(Long id) throws Exception {
-        Entry entry = new Entry();
-        if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
-            return entryRepository.save(entry);
-        }
-        else {
-            throw new Exception("erro");
-        }
+    public Entry validateCategoryById(Entry entry) {
+        return insert(entry);
     }
+
     public Entry update(Long id, Entry entry){
         Entry upEntry = entryRepository.getOne(id);
         updateDate(upEntry, entry);

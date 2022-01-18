@@ -5,6 +5,7 @@ import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
 import br.com.control.finances.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -42,21 +43,21 @@ public class EntryController  extends RuntimeException{
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Entry> createEntry(@PathVariable Long id) throws Exception{
-        Entry entry = entryService.validateCategoryById(id);
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(entry.getId())
-                .toUri();
-        return ResponseEntity.created(location).body(entry);
+    public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) throws Exception{
+        entryService.validateCategoryById(entry);
+        if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
+            return new ResponseEntity<>(entry,HttpStatus.CREATED);
+        }
+        else {
+            throw new Exception("Erro");
+        }
     }
+
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Entry> update(@PathVariable("id") Long id, @RequestBody Entry entry){
         entry = entryService.update(id, entry);
-        return ResponseEntity.ok().body(entry);
-
+        return new ResponseEntity<>(entry, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")

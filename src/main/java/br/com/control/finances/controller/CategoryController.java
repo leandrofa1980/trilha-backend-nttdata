@@ -4,6 +4,7 @@ import br.com.control.finances.entities.Category;
 import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -56,7 +57,7 @@ public class CategoryController {
     @PutMapping("/update/{id}")
     public ResponseEntity<Category> updateCategory(@PathVariable("id") Long id, @RequestBody Category category){
         category = categoryService.update(id, category);
-        return ResponseEntity.ok().body(category);
+        return new ResponseEntity<>(category,HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")
