@@ -14,12 +14,9 @@ public class CategoryService {
     @Autowired
     private CategoryRepository repository;
 
-<<<<<<< HEAD
     public CategoryService() {
     }
 
-=======
->>>>>>> desafio5
     public List<Category> findAll(){
         return repository.findAll();
     }
