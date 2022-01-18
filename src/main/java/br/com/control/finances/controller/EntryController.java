@@ -24,12 +24,18 @@ public class EntryController  extends RuntimeException{
     @Autowired
 <<<<<<< HEAD
     private CategoryRepository categoryRepository;
+<<<<<<< HEAD
 
     @Autowired
 =======
 >>>>>>> 6a831e153880f670e590fad117892bb69034103a
+=======
+  
+=======
+>>>>>>> e53195bcfb26465fd341ecfb32a8acc952cd0c57
     private EntryRepository entryRepository;
 
+>>>>>>> desafio5
     @GetMapping("/read")
     public List<Entry> readPaid(@RequestParam(required = false) Boolean paid){
         if (paid != null) {
