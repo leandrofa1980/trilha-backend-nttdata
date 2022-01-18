@@ -30,6 +30,12 @@ public class CategoryController {
         return ResponseEntity.ok().body(readAll);
     }
 
+    @GetMapping
+    public ResponseEntity<Category> nameById(Long id, String name){
+        Category readNameById = categoryService.idCategoryByName(id, name);
+        return ResponseEntity.ok().body(readNameById);
+    }
+
     @GetMapping("/read/{id}")
     public ResponseEntity<Category> readById(@PathVariable("id") Long id){
         Category readById = categoryService.findById(id);
