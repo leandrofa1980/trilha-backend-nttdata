@@ -6,6 +6,10 @@ import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+import java.util.Optional;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,6 +54,7 @@ public class EntryService {
         updateDate(upEntry, entry);
         return entryRepository.save(upEntry);
     }
+<<<<<<< HEAD
 
     public void updateDate(Entry upEntry, Entry entry) {
         upEntry.setName(entry.getName());
@@ -63,5 +68,19 @@ public class EntryService {
     public  void delete(Long id){
         entryRepository.deleteById(id);
     }
+=======
+>>>>>>> 6a831e153880f670e590fad117892bb69034103a
 
+    public void updateDate(Entry upEntry, Entry entry) {
+        upEntry.setName(entry.getName());
+        upEntry.setDescription(entry.getDescription());
+        upEntry.setType(entry.getType());
+        upEntry.setAmount(entry.getAmount());
+        upEntry.setDate(entry.getDate());
+        upEntry.setPaid(entry.getPaid());
+    }
+
+    public  void delete(Long id){
+        entryRepository.deleteById(id);
+    }
 }

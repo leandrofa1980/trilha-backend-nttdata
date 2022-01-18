@@ -22,9 +22,12 @@ public class EntryController  extends RuntimeException{
     private EntryService entryService;
 
     @Autowired
+<<<<<<< HEAD
     private CategoryRepository categoryRepository;
 
     @Autowired
+=======
+>>>>>>> 6a831e153880f670e590fad117892bb69034103a
     private EntryRepository entryRepository;
 
     @GetMapping("/read")
