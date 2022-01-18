@@ -23,7 +23,10 @@ public class EntryController  extends RuntimeException{
     private CategoryRepository categoryRepository;
 
     @Autowired
+<<<<<<< HEAD
 
+=======
+>>>>>>> desafio5
     private EntryRepository entryRepository;
 
     @GetMapping("/read")
