@@ -1,12 +1,10 @@
 package br.com.control.finances.controller;
 
-import br.com.control.finances.entities.Category;
 import br.com.control.finances.entities.Entry;
 import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
 import br.com.control.finances.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -22,12 +20,9 @@ public class EntryController  extends RuntimeException{
     private EntryService entryService;
 
     @Autowired
-<<<<<<< HEAD
     private CategoryRepository categoryRepository;
 
     @Autowired
-=======
->>>>>>> 6a831e153880f670e590fad117892bb69034103a
     private EntryRepository entryRepository;
 
     @GetMapping("/read")
