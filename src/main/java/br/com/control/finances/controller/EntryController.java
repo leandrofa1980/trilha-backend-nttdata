@@ -5,6 +5,7 @@ import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
 import br.com.control.finances.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -23,7 +24,6 @@ public class EntryController  extends RuntimeException{
     private CategoryRepository categoryRepository;
 
     @Autowired
-<<<<<<< HEAD
 
     private EntryRepository entryRepository;
 
@@ -31,14 +31,6 @@ public class EntryController  extends RuntimeException{
     public ResponseEntity<List<Entry>> readPaid(@RequestParam(required = false) Boolean paid){
         if (paid != null) {
             return ResponseEntity.ok().body(entryRepository.findByPaid(paid));
-=======
-    private EntryRepository entryRepository;
-
-    @GetMapping("/read")
-    public List<Entry> readPaid(@RequestParam(required = false) Boolean paid){
-        if (paid != null) {
-            return entryRepository.findByPaid(paid);
->>>>>>> 00daf5de06b21e77730334c7a1810a4117be24c4
         }
 
         return ResponseEntity.ok().body(entryService.findAll());
