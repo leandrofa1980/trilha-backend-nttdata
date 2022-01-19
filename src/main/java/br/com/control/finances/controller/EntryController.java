@@ -23,9 +23,6 @@ public class EntryController  extends RuntimeException{
     @GetMapping("/read")
     public List<Entry> findAll(@RequestParam(required = false) Boolean paid){
         return entryService.findAll();
-        /*  if (paid != null) {
-            return entryRepository.findByPaid(paid);
-        }*/
     }
 
     @GetMapping("/read/{id}")
