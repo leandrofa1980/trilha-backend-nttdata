@@ -21,8 +21,8 @@ public class EntryController  extends RuntimeException{
     private EntryService entryService;
 
     @GetMapping("/read")
-    public List<Entry> findAll(@RequestParam(required = false) Boolean paid){
-        return entryService.findAll();
+    public ResponseEntity<List<Entry>> findAll(@RequestParam(required = false) Boolean paid){
+        return ResponseEntity.ok().body(entryService.findAllPaid(paid));
     }
 
     @GetMapping("/read/{id}")
@@ -32,16 +32,18 @@ public class EntryController  extends RuntimeException{
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) {
+    public ResponseEntity<Object> createEntry(@RequestBody Entry entry) {
         Entry create = entryService.validateCategoryById(entry);
-        return ResponseEntity.ok().body(create);
+        if(create == null){
+            return ResponseEntity.badRequest().body("Categoria não existe");
+        }
+        return new ResponseEntity<>(create, HttpStatus.CREATED);
     }
 
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Entry> update(@PathVariable("id") Long id, @RequestBody Entry entry){
-        entry = entryService.update(id, entry);
-        return new ResponseEntity<>(entry, HttpStatus.CREATED);
+        return new ResponseEntity<>(entry, HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/delete/{id}")

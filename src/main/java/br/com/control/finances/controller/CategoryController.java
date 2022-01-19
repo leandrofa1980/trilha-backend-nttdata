@@ -31,8 +31,8 @@ public class CategoryController {
         return ResponseEntity.ok().body(readAll);
     }
 
-    @GetMapping("/read/{name}")
-    public ResponseEntity<Long> nameById(@PathVariable("name") String name){
+    @GetMapping("/read/nameCategory/{name}")
+    public ResponseEntity<Long> name(@PathVariable("name") String name){
         Category readName = categoryService.idCategoryByName(name);
         return ResponseEntity.ok().body(readName.getId());
     }

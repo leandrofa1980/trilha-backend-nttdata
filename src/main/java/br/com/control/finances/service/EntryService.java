@@ -6,6 +6,7 @@ import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,10 @@ public class EntryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    public List<Entry> findAll(){
+    public List<Entry> findAllPaid(Boolean paid){
+        if (paid != null) {
+            return entryRepository.findByPaid(paid);
+        }
         return entryRepository.findAll();
     }
 
