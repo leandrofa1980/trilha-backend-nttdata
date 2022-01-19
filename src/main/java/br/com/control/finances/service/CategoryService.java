@@ -4,6 +4,7 @@ import br.com.control.finances.entities.Category;
 import br.com.control.finances.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,11 +26,10 @@ public class CategoryService {
         Optional<Category> idRead = repository.findById(id);
         return idRead.get();
     }
-/*
-    public Category idCategoryByName(Long id){
-        Optional<Category> name = repository.findById(id);
-        return name.get();
-    }*/
+    public Category idCategoryByName(Long id, String name){
+        Optional<Category> nameById = repository.findById(id);
+        return repository.findByName(String.valueOf(nameById));
+    }
 
     public Category insert(Category category){
         return  repository.save(category);

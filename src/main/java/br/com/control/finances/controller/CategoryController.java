@@ -4,6 +4,7 @@ import br.com.control.finances.entities.Category;
 import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -26,14 +27,18 @@ public class CategoryController {
 
     @GetMapping("/read")
     public ResponseEntity<List<Category>> read(){
-        List<Category> readAll = categoryService.findAll();
-        return ResponseEntity.ok().body(readAll);
+        return ResponseEntity.ok().body(categoryService.findAll());
+    }
+
+    @GetMapping
+    public ResponseEntity<Category> nameById(@RequestParam(name = "id") Long id, @RequestParam String name){
+        Category readNmeById = categoryService.idCategoryByName(id, name);
+        return ResponseEntity.ok().body(readNmeById);
     }
 
     @GetMapping("/read/{id}")
     public ResponseEntity<Category> readById(@PathVariable("id") Long id){
-        Category readById = categoryService.findById(id);
-        return ResponseEntity.ok().body(readById);
+        return ResponseEntity.ok().body(categoryService.findById(id));
     }
 
     @PostMapping("/create")
@@ -49,8 +54,7 @@ public class CategoryController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Category> updateCategory(@PathVariable("id") Long id, @RequestBody Category category){
-        category = categoryService.update(id, category);
-        return ResponseEntity.ok().body(category);
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.update(id, category));
     }
 
     @DeleteMapping("/delete/{id}")
