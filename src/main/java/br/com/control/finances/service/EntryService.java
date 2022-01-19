@@ -37,7 +37,11 @@ public class EntryService {
         return categoryRepository.findById(id);
     }
 
+<<<<<<< HEAD
     public Entry validateCategoryById(Entry entry) {
+=======
+    public Entry validateCategoryById(Entry entry) throws Exception {
+>>>>>>> desafio5
         return insert(entry);
     }
 

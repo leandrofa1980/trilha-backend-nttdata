@@ -28,12 +28,12 @@ public class EntryController  extends RuntimeException{
     private EntryRepository entryRepository;
 
     @GetMapping("/read")
-    public List<Entry> readPaid(@RequestParam(required = false) Boolean paid){
+    public ResponseEntity<List<Entry>> readPaid(@RequestParam(required = false) Boolean paid){
         if (paid != null) {
-            return entryRepository.findByPaid(paid);
+            return ResponseEntity.ok().body(entryRepository.findByPaid(paid));
         }
 
-        return entryService.findAll();
+        return ResponseEntity.ok().body(entryService.findAll());
     }
 
     @GetMapping("/read/{id}")
