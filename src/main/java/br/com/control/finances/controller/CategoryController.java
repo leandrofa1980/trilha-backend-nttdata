@@ -31,10 +31,10 @@ public class CategoryController {
         return ResponseEntity.ok().body(readAll);
     }
 
-    @GetMapping
-    public ResponseEntity<Category> nameById(Long id, String name){
-        Category readNameById = categoryService.idCategoryByName(id, name);
-        return ResponseEntity.ok().body(readNameById);
+    @GetMapping("/read/{name}")
+    public ResponseEntity<Long> nameById(@PathVariable("name") String name){
+        Category readName = categoryService.idCategoryByName(name);
+        return ResponseEntity.ok().body(readName.getId());
     }
 
     @GetMapping("/read/{id}")
@@ -45,19 +45,19 @@ public class CategoryController {
 
     @PostMapping("/create")
     public ResponseEntity<Category> createCategory(@RequestBody Category category){
-        category = categoryService.insert(category);
+        Category createCategory = categoryService.insert(category);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(category.getId())
                 .toUri();
-        return ResponseEntity.created(location).body(category);
+        return ResponseEntity.created(location).body(createCategory);
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Category> updateCategory(@PathVariable("id") Long id, @RequestBody Category category){
-        category = categoryService.update(id, category);
-        return new ResponseEntity<>(category,HttpStatus.CREATED);
+        Category updateCategory = categoryService.update(id, category);
+        return new ResponseEntity<>(updateCategory,HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")

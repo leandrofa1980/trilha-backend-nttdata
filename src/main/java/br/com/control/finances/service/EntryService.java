@@ -5,6 +5,8 @@ import br.com.control.finances.entities.Entry;
 import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -28,16 +30,15 @@ public class EntryService {
         return idRead.get();
     }
 
-    public Entry insert(Entry entry){
-        return entryRepository.save(entry);
-    }
-
     public Optional<Category> byIdCategory(Long id){
         return categoryRepository.findById(id);
     }
 
     public Entry validateCategoryById(Entry entry) {
-            return insert(entry);
+        if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
+            return entryRepository.save(entry);
+        }
+        return null;
     }
 
     public Entry update (Long id, Entry entry){
