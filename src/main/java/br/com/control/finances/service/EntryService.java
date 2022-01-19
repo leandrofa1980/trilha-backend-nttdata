@@ -28,24 +28,24 @@ public class EntryService {
         return idRead.get();
     }
 
-    public Entry insert(Entry entry){
-        return entryRepository.save(entry);
-    }
-
     public Optional<Category> byIdCategory(Long id){
         return categoryRepository.findById(id);
     }
 
-    public Entry validateCategoryById(Entry entry) throws Exception {
-        return insert(entry);
+    public Entry validateCategoryById(Entry entry) {
+        if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
+            return entryRepository.save(entry);
+        }
+        return null;
     }
-    public Entry update(Long id, Entry entry){
+
+    public Entry update (Long id, Entry entry){
         Entry upEntry = entryRepository.getOne(id);
         updateDate(upEntry, entry);
         return entryRepository.save(upEntry);
     }
 
-    public void updateDate(Entry upEntry, Entry entry) {
+    public void updateDate (Entry upEntry, Entry entry){
         upEntry.setName(entry.getName());
         upEntry.setDescription(entry.getDescription());
         upEntry.setType(entry.getType());
@@ -54,7 +54,7 @@ public class EntryService {
         upEntry.setPaid(entry.getPaid());
     }
 
-    public  void delete(Long id){
+    public void delete (Long id){
         entryRepository.deleteById(id);
     }
 }

@@ -27,34 +27,37 @@ public class CategoryController {
 
     @GetMapping("/read")
     public ResponseEntity<List<Category>> read(){
-        return ResponseEntity.ok().body(categoryService.findAll());
+        List<Category> readAll = categoryService.findAll();
+        return ResponseEntity.ok().body(readAll);
     }
 
-    @GetMapping
-    public ResponseEntity<Category> nameById(@RequestParam(name = "id") Long id, @RequestParam String name){
-        Category readNmeById = categoryService.idCategoryByName(id, name);
-        return ResponseEntity.ok().body(readNmeById);
+    @GetMapping("/read/{name}")
+    public ResponseEntity<Long> nameById(@PathVariable("name") String name){
+        Category readName = categoryService.idCategoryByName(name);
+        return ResponseEntity.ok().body(readName.getId());
     }
 
     @GetMapping("/read/{id}")
     public ResponseEntity<Category> readById(@PathVariable("id") Long id){
-        return ResponseEntity.ok().body(categoryService.findById(id));
+        Category readById = categoryService.findById(id);
+        return ResponseEntity.ok().body(readById);
     }
 
     @PostMapping("/create")
     public ResponseEntity<Category> createCategory(@RequestBody Category category){
-        category = categoryService.insert(category);
+        Category createCategory = categoryService.insert(category);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(category.getId())
                 .toUri();
-        return ResponseEntity.created(location).body(category);
+        return ResponseEntity.created(location).body(createCategory);
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Category> updateCategory(@PathVariable("id") Long id, @RequestBody Category category){
-        return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.update(id, category));
+        Category updateCategory = categoryService.update(id, category);
+        return new ResponseEntity<>(updateCategory,HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")

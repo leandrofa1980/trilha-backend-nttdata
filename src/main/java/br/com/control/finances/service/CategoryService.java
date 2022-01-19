@@ -14,6 +14,9 @@ public class CategoryService {
     @Autowired
     private CategoryRepository repository;
 
+    public CategoryService() {
+    }
+
     public List<Category> findAll(){
         return repository.findAll();
     }
@@ -22,9 +25,8 @@ public class CategoryService {
         Optional<Category> idRead = repository.findById(id);
         return idRead.get();
     }
-    public Category idCategoryByName(Long id, String name){
-        Optional<Category> nameById = repository.findById(id);
-        return repository.findByName(String.valueOf(nameById));
+    public Category idCategoryByName(String name){
+        return repository.findByName(name);
     }
 
     public Category insert(Category category){

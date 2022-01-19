@@ -20,20 +20,12 @@ public class EntryController  extends RuntimeException{
     @Autowired
     private EntryService entryService;
 
-    @Autowired
-    private CategoryRepository categoryRepository;
-
-    @Autowired
-
-    private EntryRepository entryRepository;
-
     @GetMapping("/read")
-    public ResponseEntity<List<Entry>> readPaid(@RequestParam(required = false) Boolean paid){
-        if (paid != null) {
-            return ResponseEntity.ok().body(entryRepository.findByPaid(paid));
-        }
-
-        return ResponseEntity.ok().body(entryService.findAll());
+    public List<Entry> findAll(@RequestParam(required = false) Boolean paid){
+        return entryService.findAll();
+        /*  if (paid != null) {
+            return entryRepository.findByPaid(paid);
+        }*/
     }
 
     @GetMapping("/read/{id}")
@@ -43,14 +35,9 @@ public class EntryController  extends RuntimeException{
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) throws Exception{
-        entryService.validateCategoryById(entry);
-        if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
-            return new ResponseEntity<>(entry,HttpStatus.CREATED);
-        }
-        else {
-            throw new Exception("Erro");
-        }
+    public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) {
+        Entry create = entryService.validateCategoryById(entry);
+        return ResponseEntity.ok().body(create);
     }
 
 
@@ -62,7 +49,7 @@ public class EntryController  extends RuntimeException{
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id){
-        entryRepository.deleteById(id);
+        entryService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
