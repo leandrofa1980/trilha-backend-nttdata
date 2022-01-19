@@ -13,7 +13,6 @@ import java.util.Optional;
 
 @Service
 public class EntryService {
-
     @Autowired
     private EntryRepository entryRepository;
 
@@ -37,21 +36,17 @@ public class EntryService {
         return categoryRepository.findById(id);
     }
 
-<<<<<<< HEAD
     public Entry validateCategoryById(Entry entry) {
-=======
-    public Entry validateCategoryById(Entry entry) throws Exception {
->>>>>>> desafio5
-        return insert(entry);
+            return insert(entry);
     }
 
-    public Entry update(Long id, Entry entry){
+    public Entry update (Long id, Entry entry){
         Entry upEntry = entryRepository.getOne(id);
         updateDate(upEntry, entry);
         return entryRepository.save(upEntry);
     }
 
-    public void updateDate(Entry upEntry, Entry entry) {
+    public void updateDate (Entry upEntry, Entry entry){
         upEntry.setName(entry.getName());
         upEntry.setDescription(entry.getDescription());
         upEntry.setType(entry.getType());
@@ -60,7 +55,7 @@ public class EntryService {
         upEntry.setPaid(entry.getPaid());
     }
 
-    public  void delete(Long id){
+    public void delete (Long id){
         entryRepository.deleteById(id);
     }
 }
