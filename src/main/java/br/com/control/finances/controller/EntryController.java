@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/entries")
-public class EntryController  extends RuntimeException{
+public class EntryController {
 
     @Autowired
     private EntryService entryService;
@@ -23,6 +23,11 @@ public class EntryController  extends RuntimeException{
     @GetMapping("/read")
     public ResponseEntity<List<Entry>> findAll(@RequestParam(required = false) Boolean paid){
         return ResponseEntity.ok().body(entryService.findAllPaid(paid));
+    public List<Entry> findAll(@RequestParam(required = false) Boolean paid){
+      /*  if (paid != null) {
+            return entryRepository.findByPaid(paid);
+        }*/
+        return entryService.findAll();
     }
 
     @GetMapping("/read/{id}")
