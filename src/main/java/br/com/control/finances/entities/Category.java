@@ -58,8 +58,8 @@ public class Category {
     public List<Entry> getEntries() {
         return entries;
     }
-
+/*
     public void setEntries(List<Entry> entries) {
         this.entries = entries;
-    }
+    }*/
 }

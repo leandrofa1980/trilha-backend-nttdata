@@ -192,6 +192,8 @@ Em um ambiente REST geralmente corresponde aos métodos HTTP - POST, GET, PUT, D
 - [www.codecademy.com/article/what-is-crud](https://www.codecademy.com/article/what-is-crud)
 - [www.stackoverflow.com](https://pt.stackoverflow.com/questions/359961/o-que-caracteriza-um-projeto-crud-b%C3%A1sico)
 
+---
+
 <h2>
     Desafio 5
 </h2>
