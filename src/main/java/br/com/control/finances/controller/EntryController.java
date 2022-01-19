@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/entries")
-public class EntryController  extends RuntimeException{
+public class EntryController {
 
     @Autowired
     private EntryService entryService;
