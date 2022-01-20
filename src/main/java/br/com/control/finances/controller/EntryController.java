@@ -1,5 +1,6 @@
 package br.com.control.finances.controller;
 
+import br.com.control.finances.dto.EntryDTO;
 import br.com.control.finances.entities.Entry;
 import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
@@ -26,9 +27,9 @@ public class EntryController {
     }
 
     @GetMapping("/read/{id}")
-    public ResponseEntity<Entry> readById(@PathVariable("id") Long id){
+    public ResponseEntity<EntryDTO> readById(@PathVariable("id") Long id){
         Entry readById = entryService.findById(id);
-        return ResponseEntity.ok().body(readById);
+        return ResponseEntity.ok(EntryDTO.convertDTO(readById));
     }
 
     @PostMapping("/create")
@@ -43,7 +44,8 @@ public class EntryController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Entry> update(@PathVariable("id") Long id, @RequestBody Entry entry){
-        return new ResponseEntity<>(entry, HttpStatus.ACCEPTED);
+        Entry entryUp = entryService.update(id, entry);
+        return new ResponseEntity<>(entryUp, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -1,36 +1,24 @@
-package br.com.control.finances.entities;
+package br.com.control.finances.dto;
 
-import javax.persistence.*;
+import br.com.control.finances.entities.Category;
+import br.com.control.finances.entities.Entry;
 
-@Entity
-@Table(name = "ENTRIES")
-public class Entry {
+import java.io.Serializable;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false, length = 50)
+public class EntryDTO  implements Serializable {
+
     private String name;
-    @Column(nullable = false, length = 100)
     private String description;
-    @Column(nullable = false, length = 15)
     private String type;
-    @Column(nullable = false)
     private Double amount;
-    @Column(nullable = false, length = 10)
     private String date;
-    @Column(nullable = false)
     private boolean paid;
-
-    @ManyToOne
-    @JoinColumn(name = "category")
     private Category category;
 
-    public Entry() {
+    public EntryDTO(){
     }
 
-    public Entry(Long id, String name, String description, String type, Double amount, String date, boolean paid, Category category) {
-        this.id = id;
+    public EntryDTO(String name, String description, String type, Double amount, String date, boolean paid, Category category) {
         this.name = name;
         this.description = description;
         this.type = type;
@@ -40,12 +28,10 @@ public class Entry {
         this.category = category;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public static EntryDTO convertDTO(Entry entry){
+        return new EntryDTO(entry.getName(), entry.getDescription(), entry.getType(),
+                entry.getAmount(), entry.getDate(),
+                entry.getPaid(), entry.getCategory());
     }
 
     public String getName() {
@@ -88,7 +74,7 @@ public class Entry {
         this.date = date;
     }
 
-    public boolean getPaid() {
+    public boolean isPaid() {
         return paid;
     }
 
