@@ -205,3 +205,19 @@ Conhecer uma nova camada de uma aplicação, entender a responsabilidade de cada
 #### Defina a responsabilidade das camadas 'entity', 'controller', 'repository' e 'service'.
 
 Como dito antes o JPA é quem dita como devemos implementar para prover a comunicação com o banco de dados, junto com ela podemos usar camadas lógicas que fazem parte do sistema e rodam no lado do servidor conversando com o lado do cliente, a camada 'controller' faz esse papel é a ligação da aplicação com o backend ela recebe requisições e responde de acordo com o comportamento do sistema, temos outras camadas e suas responsabilidades, na camada 'service' ficam as regras de negócio da aplicação, 'repository' faz a ponte com o banco de dados, com ela temos acesso aos métodos da JPA referentes as operações de CRUD, todas essas camadas conversam com a 'entity' que contém classes com atributos básicos para persistência e as anotações JPA que utilizamos para mapear nossa aplicação no banco de dados, uma entidade representa, na Orientação a Objetos, uma tabela do banco de dados, e cada atributo dessa entidade representa uma linha dessa tabela.
+
+---
+
+<h2>Desafio 6</h2>
+
+### Objetivo
+É conhecer o funcionamento das classes de DTO e a importância dessa prática que tem como viés trazer maior segurança para nossa aplicação.
+
+#### O que significa DTO, e qual sua importância?
+
+DTO - (Data Transfer Object): é um padrão de projeto usado em Java para transporte de dados, tem o papel de carregar dados das entidades de forma simples, podendo inclusive "projetar" apenas alguns dados da entidade original, de forma simples provê exatamente aquilo que é necessário para um determinado processo.
+Vantagens:
+- Otimizar o tráfego (trafegando menos dados);
+- Evitar que dados de interesse exclusivos do sistema fiquem sendo expostos, exemplo: senha, data de atualização, dados de auditória etc.
+- Customizar os objetos trafegados conforme a necessiadade de cada requisição, por exemplo: para alterar um produto, você precisa dos dados A, B, C; já para listar os produtos apenas dos dados A, B e a categoria de cada produto.
+
