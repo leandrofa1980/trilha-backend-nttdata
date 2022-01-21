@@ -2,17 +2,14 @@ package br.com.control.finances.controller;
 
 import br.com.control.finances.dto.EntryDTO;
 import br.com.control.finances.entities.Entry;
-import br.com.control.finances.repository.CategoryRepository;
-import br.com.control.finances.repository.EntryRepository;
 import br.com.control.finances.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/entries")
@@ -22,14 +19,16 @@ public class EntryController {
     private EntryService entryService;
 
     @GetMapping("/read")
-    public ResponseEntity<List<Entry>> findAll(@RequestParam(required = false) Boolean paid){
-        return ResponseEntity.ok().body(entryService.findAllPaid(paid));
+    public ResponseEntity<List<EntryDTO>> findAll(@RequestParam(required = false) Boolean paid){
+        return ResponseEntity.ok().body(entryService.findAllPaid(paid).stream()
+                .map(entry -> EntryDTO.convertToDTO(entry))
+                .collect(Collectors.toList()));
     }
 
     @GetMapping("/read/{id}")
     public ResponseEntity<EntryDTO> readById(@PathVariable("id") Long id){
         Entry readById = entryService.findById(id);
-        return ResponseEntity.ok(EntryDTO.convertDTO(readById));
+        return ResponseEntity.ok(EntryDTO.convertToDTO(readById));
     }
 
     @PostMapping("/create")

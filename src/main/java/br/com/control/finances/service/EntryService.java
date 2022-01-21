@@ -53,7 +53,7 @@ public class EntryService {
         upEntry.setType(entry.getType());
         upEntry.setAmount(entry.getAmount());
         upEntry.setDate(entry.getDate());
-        upEntry.setPaid(entry.getPaid());
+        upEntry.setPaid(entry.isPaid());
     }
 
     public void delete (Long id){
