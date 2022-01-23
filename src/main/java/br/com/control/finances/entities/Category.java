@@ -3,7 +3,6 @@ package br.com.control.finances.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,10 +10,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Data
-@Builder
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @Table(name = "CATEGORIES")
 public class Category {
 

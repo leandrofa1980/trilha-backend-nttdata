@@ -1,32 +1,43 @@
 package br.com.control.finances.service;
 
+import br.com.control.finances.dto.ChartDto;
+import br.com.control.finances.dto.EntryDto;
 import br.com.control.finances.entities.Category;
 import br.com.control.finances.entities.Entry;
+import br.com.control.finances.mapper.EntryMapper;
 import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.repository.EntryRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class EntryService {
-    @Autowired
-    private EntryRepository entryRepository;
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    private final EntryRepository repository;
+
+    @Autowired
+    private final CategoryRepository categoryRepository;
+
+    @Autowired
+    private final EntryMapper entryMapper;
 
     public List<Entry> findAllPaid(Boolean paid){
         if (paid != null) {
-            return entryRepository.findByPaid(paid);
+            return repository.findByPaid(paid);
         }
-        return entryRepository.findAll();
+        return repository.findAll();
     }
 
     public Entry findById(Long id){
-        Optional<Entry> idRead = entryRepository.findById(id);
+        Optional<Entry> idRead = repository.findById(id);
         return idRead.get();
     }
 
@@ -34,34 +45,44 @@ public class EntryService {
         return categoryRepository.findById(id);
     }
 
-    public Entry validateCategoryById(Entry entry) {
+    public Entry validateCategoryById(EntryDto entryDto) {
+        Entry entry = new Entry();
         if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
-            return entryRepository.save(entry);
+            return repository.save(entryMapper.dtoToEntity(entryDto));
         }
         return null;
     }
 
-    public Entry update (Long id, Entry entry){
-        Entry upEntry = entryRepository.getOne(id);
-        updateDate(upEntry, entry);
-        return entryRepository.save(upEntry);
+    public Entry update (Long id, EntryDto entryDto){
+        Entry upEntry = repository.getById(id);
+        updateEntry(upEntry, entryDto);
+        return repository.save(upEntry);
     }
 
-    public void updateDate (Entry upEntry, Entry entry){
-        upEntry.setName(entry.getName());
-        upEntry.setDescription(entry.getDescription());
-        upEntry.setType(entry.getType());
-        upEntry.setAmount(entry.getAmount());
-        upEntry.setDate(entry.getDate());
-        upEntry.setPaid(entry.isPaid());
+    private void updateEntry(Entry upEntry, EntryDto entryDto) {
+        upEntry.setName(entryDto.getName());
+        upEntry.setDescription(entryDto.getDescription());
+        upEntry.setType(entryDto.getType());
+        upEntry.setAmount(entryDto.getAmount());
+        upEntry.setDate(entryDto.getDate());
+        upEntry.setPaid(entryDto.isPaid());
     }
 
     public void delete (Long id){
-        entryRepository.deleteById(id);
+        repository.deleteById(id);
     }
 
-    public String listCategories(String name){
-        Category listNameCategories = categoryRepository.findByName(name);
-        return listNameCategories.getName();
+    public List<ChartDto> totalAmount(){
+        List<ChartDto> newList = new ArrayList<>();
+        List<Category> newListCategory = categoryRepository.findAll();
+        BigDecimal total = BigDecimal.ZERO;
+        for(int i = 0; i <=newListCategory.size();i++){
+
+            for (int j = 0;j <= newListCategory.get(i).getEntries().size();j++){
+                total = total.add(newListCategory.get(i).getEntries().get(j).getAmount());
+            }
+            newList.add(new ChartDto(newListCategory.get(i).getName(), total));
+        }
+        return newList;
     }
 }

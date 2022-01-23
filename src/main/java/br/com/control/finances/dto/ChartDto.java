@@ -4,15 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DTOChart {
+public class ChartDto {
 
     private String name;
     private String type;
-    private String total;
+    private Double total;
 
+    public ChartDto(String name, BigDecimal total) {
 
-
+    }
 }
+

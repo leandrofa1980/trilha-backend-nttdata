@@ -1,16 +1,15 @@
 package br.com.control.finances.entities;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "ENTRIES")
 public class Entry {
@@ -25,7 +24,7 @@ public class Entry {
     @Column(nullable = false, length = 15)
     private String type;
     @Column(nullable = false)
-    private Double amount;
+    private BigDecimal amount;
     @Column(nullable = false, length = 10)
     private String date;
     @Column(nullable = false)
@@ -34,4 +33,5 @@ public class Entry {
     @ManyToOne
     @JoinColumn(name = "category")
     private Category category;
+
 }

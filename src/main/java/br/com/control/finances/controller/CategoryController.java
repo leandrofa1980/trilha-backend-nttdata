@@ -1,5 +1,6 @@
 package br.com.control.finances.controller;
 
+import br.com.control.finances.dto.CategoryDto;
 import br.com.control.finances.entities.Category;
 import br.com.control.finances.repository.CategoryRepository;
 import br.com.control.finances.service.CategoryService;
@@ -8,9 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 
@@ -44,20 +43,14 @@ public class CategoryController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Category> createCategory(@RequestBody Category category){
-        Category createCategory = categoryService.insert(category);
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(category.getId())
-                .toUri();
-        return ResponseEntity.created(location).body(createCategory);
+    public ResponseEntity<Category> createCategory(@RequestBody CategoryDto category){
+        return ResponseEntity.ok().body(categoryService.insert(category));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Category> updateCategory(@PathVariable("id") Long id, @RequestBody Category category){
-        Category updateCategory = categoryService.update(id, category);
-        return new ResponseEntity<>(updateCategory,HttpStatus.CREATED);
+    public ResponseEntity<Category> updateCategory(@PathVariable("id") Long id, @RequestBody CategoryDto categoryDto){
+        Category updateCategory = categoryService.update(id, categoryDto);
+        return new ResponseEntity<>(updateCategory,HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/delete/{id}")
