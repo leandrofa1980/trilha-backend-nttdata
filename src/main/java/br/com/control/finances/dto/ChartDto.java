@@ -1,5 +1,6 @@
 package br.com.control.finances.dto;
 
+import br.com.control.finances.entities.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +13,7 @@ import java.math.BigDecimal;
 public class ChartDto {
 
     private String name;
-    private String type;
-    private Double total;
+    private BigDecimal sum;
 
-    public ChartDto(String name, BigDecimal total) {
-
-    }
 }
 

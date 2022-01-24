@@ -20,19 +20,20 @@ public class EntryController {
     @Autowired
     private EntryService entryService;
 
-    @GetMapping("/read")
+    @GetMapping
     public ResponseEntity<List<Entry>> findAll(@RequestParam(required = false) Boolean paid){
         return ResponseEntity.ok().body(entryService.findAllPaid(paid));
     }
 
-    @GetMapping("/read/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Entry> readById(@PathVariable("id") Long id){
         Entry readById = entryService.findById(id);
         return ResponseEntity.ok().body(readById);
     }
-    @GetMapping("/listAmount")
-    public ResponseEntity<ChartDto> newlist(@RequestBody ChartDto dtoChart){
-        return ResponseEntity.ok().body(dtoChart);
+
+    @GetMapping("/dashboard")
+    public ResponseEntity<List<ChartDto>> amount(){
+        return ResponseEntity.ok(entryService.amount());
     }
 
     @PostMapping("/create")
@@ -47,7 +48,7 @@ public class EntryController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Entry> update(@PathVariable("id") Long id, @RequestBody EntryDto entryDto){
-        return new ResponseEntity(entryDto, HttpStatus.ACCEPTED);
+        return ResponseEntity.ok(entryService.update(id, entryDto));
     }
 
     @DeleteMapping("/delete/{id}")

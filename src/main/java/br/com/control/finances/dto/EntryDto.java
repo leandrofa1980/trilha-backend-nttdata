@@ -1,6 +1,6 @@
 package br.com.control.finances.dto;
 
-import com.fasterxml.jackson.databind.deser.UnresolvedId;
+import br.com.control.finances.entities.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,5 +18,7 @@ public class EntryDto {
     private BigDecimal amount;
     private String date;
     private boolean paid;
+
+    private Category category;
 
 }

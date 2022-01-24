@@ -10,6 +10,7 @@ import br.com.control.finances.repository.EntryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -46,8 +47,7 @@ public class EntryService {
     }
 
     public Entry validateCategoryById(EntryDto entryDto) {
-        Entry entry = new Entry();
-        if (categoryRepository.findById(entry.getCategory().getId()).isPresent()){
+        if (categoryRepository.findById(entryDto.getCategory().getId()).isPresent()){
             return repository.save(entryMapper.dtoToEntity(entryDto));
         }
         return null;
@@ -72,17 +72,18 @@ public class EntryService {
         repository.deleteById(id);
     }
 
-    public List<ChartDto> totalAmount(){
-        List<ChartDto> newList = new ArrayList<>();
+    public List<ChartDto> amount(){
+        List<ChartDto> listAmount = new ArrayList<>();
         List<Category> newListCategory = categoryRepository.findAll();
-        BigDecimal total = BigDecimal.ZERO;
-        for(int i = 0; i <=newListCategory.size();i++){
+        BigDecimal sum = BigDecimal.ZERO;
+        for(int i = 0; i <= newListCategory.size(); i++){
+            List<Entry> newListEntry = newListCategory.get(i).getEntries();
+            for (int j = 0;j <= newListEntry.size();j++){
 
-            for (int j = 0;j <= newListCategory.get(i).getEntries().size();j++){
-                total = total.add(newListCategory.get(i).getEntries().get(j).getAmount());
+                sum = newListEntry.get(j).getAmount();
             }
-            newList.add(new ChartDto(newListCategory.get(i).getName(), total));
+            listAmount.add(new ChartDto(newListCategory.get(i).getName(), sum));
         }
-        return newList;
+        return listAmount;
     }
 }
