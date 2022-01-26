@@ -76,11 +76,11 @@ public class EntryService {
         List<ChartDto> listAmount = new ArrayList<>();
         List<Category> newListCategory = categoryRepository.findAll();
         BigDecimal sum = BigDecimal.ZERO;
-        for(int i = 0; i <= newListCategory.size(); i++){
+        for(int i = 0; i <= newListCategory.size()-1; i++){
             List<Entry> newListEntry = newListCategory.get(i).getEntries();
-            for (int j = 0;j <= newListEntry.size();j++){
+            for (int j = 0;j <= newListEntry.size()-1;j++){
 
-                sum = newListEntry.get(j).getAmount();
+                sum = sum.add(newListEntry.get(j).getAmount());
             }
             listAmount.add(new ChartDto(newListCategory.get(i).getName(), sum));
         }

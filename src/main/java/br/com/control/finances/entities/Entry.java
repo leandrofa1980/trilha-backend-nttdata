@@ -17,9 +17,9 @@ public class Entry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, length = 50)
+    @Column(name = "name", length = 50)
     private String name;
-    @Column(nullable = false, length = 100)
+    @Column(name = "", length = 100)
     private String description;
     @Column(nullable = false, length = 15)
     private String type;
