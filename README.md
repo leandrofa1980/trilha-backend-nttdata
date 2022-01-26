@@ -221,3 +221,10 @@ Vantagens:
 - Evitar que dados de interesse exclusivos do sistema fiquem sendo expostos, exemplo: senha, data de atualização, dados de auditória etc.
 - Customizar os objetos trafegados conforme a necessiadade de cada requisição, por exemplo: para alterar um produto, você precisa dos dados A, B, C; já para listar os produtos apenas dos dados A, B e a categoria de cada produto.
 
+---
+
+<h2>Desafio 7</h2>
+
+### Objetivo
+É aprender os conceitos de validação, tratamento e manipulação de dados de forma otimizada.
+
