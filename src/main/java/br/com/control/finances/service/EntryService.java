@@ -74,7 +74,11 @@ public class EntryService {
     public List<ChartDto> amount(){
         List<ChartDto> listAmount = new ArrayList<>();
         List<Category> newListCategory = categoryRepository.findAll();
-        BigDecimal sum = BigDecimal.ZERO;
+        newListCategory.forEach(category -> listAmount.add(new ChartDto(category.getName(),
+                category.getEntries().stream()
+                        .map(Entry::getAmount)
+                        .reduce(BigDecimal.ZERO, BigDecimal::add)))); 
+        /*BigDecimal sum = BigDecimal.ZERO;
         for(int i = 0; i <= newListCategory.size()-1; i++){
             List<Entry> newListEntry = newListCategory.get(i).getEntries();
             for (int j = 0;j <= newListEntry.size()-1;j++){
@@ -82,7 +86,7 @@ public class EntryService {
                 sum = sum.add(newListEntry.get(j).getAmount());
             }
             listAmount.add(new ChartDto(newListCategory.get(i).getName(), sum));
-        }
+        }*/
         return listAmount;
     }
 }
