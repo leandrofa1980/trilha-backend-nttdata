@@ -19,9 +19,9 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name", length = 50)
+    @Column(nullable = false, length = 50)
     private  String name;
-    @Column(name = "description", length = 100)
+    @Column(nullable = false, length = 100)
     private  String description;
 
     @JsonIgnore

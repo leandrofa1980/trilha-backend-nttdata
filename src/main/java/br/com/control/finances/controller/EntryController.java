@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Repository
@@ -37,7 +38,7 @@ public class EntryController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Object> createEntry(@RequestBody EntryDto entryDto) {
+    public ResponseEntity<Object> createEntry(@Valid @RequestBody EntryDto entryDto) {
         Entry create = entryService.validateCategoryById(entryDto);
         if(create == null){
             return ResponseEntity.badRequest().body("Categoria não existe");
@@ -47,7 +48,7 @@ public class EntryController {
 
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Entry> update(@PathVariable("id") Long id, @RequestBody EntryDto entryDto){
+    public ResponseEntity<Entry> update(@Valid @PathVariable("id") Long id, @RequestBody EntryDto entryDto){
         return ResponseEntity.ok(entryService.update(id, entryDto));
     }
 

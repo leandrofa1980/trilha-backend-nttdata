@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -43,12 +44,12 @@ public class CategoryController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Category> createCategory(@RequestBody CategoryDto category){
+    public ResponseEntity<Category> createCategory(@Valid @RequestBody CategoryDto category){
         return ResponseEntity.ok().body(categoryService.insert(category));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Category> updateCategory(@PathVariable("id") Long id, @RequestBody CategoryDto categoryDto){
+    public ResponseEntity<Category> updateCategory(@Valid @PathVariable("id") Long id, @RequestBody CategoryDto categoryDto){
         Category updateCategory = categoryService.update(id, categoryDto);
         return new ResponseEntity<>(updateCategory,HttpStatus.ACCEPTED);
     }
