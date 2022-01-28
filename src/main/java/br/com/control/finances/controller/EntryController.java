@@ -3,6 +3,7 @@ package br.com.control.finances.controller;
 import br.com.control.finances.dto.ChartDto;
 import br.com.control.finances.dto.EntryDto;
 import br.com.control.finances.entities.Entry;
+import br.com.control.finances.exceptions.ArithmeticException;
 import br.com.control.finances.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -64,7 +65,7 @@ public class EntryController {
             return entryService.calculaMedia(x,y);
         }
         catch (Exception e){
-            throw new Exception("Não é divisivel por 0");
+            throw new ArithmeticException("Não é divisivel por 0");
         }
 
     }
