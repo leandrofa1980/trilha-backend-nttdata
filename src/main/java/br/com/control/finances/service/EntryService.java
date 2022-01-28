@@ -89,4 +89,8 @@ public class EntryService {
         }*/
         return listAmount;
     }
+
+    public Integer calculaMedia(Integer x, Integer y){
+        return x/y;
+    }
 }

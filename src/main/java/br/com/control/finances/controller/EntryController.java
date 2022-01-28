@@ -57,4 +57,9 @@ public class EntryController {
         entryService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/calcula{x}/{y}")
+    public Integer calculaMedia(@PathVariable("x") Integer x, @PathVariable("y") Integer y){
+    return entryService.calculaMedia(x,y);
+    }
 }
