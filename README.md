@@ -228,3 +228,56 @@ Vantagens:
 ### Objetivo
 É aprender os conceitos de validação, tratamento e manipulação de dados de forma otimizada.
 
+<h2> Deasfio 8 </h2>
+
+### Objetivo
+
+Entender como funcionam as exceptions, e ser capaz de trata-las com o intuito de manter um bom funcionamento da API.
+
+#### O que são exceptions?
+
+De acordo com a documentação da Oracle "exceptions" é um evento que ocorre durante a execução de um programa, que interrompe o fluxo normal das instruções do programa. Quando um erro ocorre é criado um objeto chamado de exception object(objeto de exceção), que contém informações sobre o erro, tipo de erro e o estado do programa quando o erro ocorreu, esse processo é conhecido como lançar uma exceção, com a exceção lançada o sistema tenta encontrar algo para lidar com erro, pesquisando um método que contém um bloco de código que pode manipular a exceção, quando encontrado o bloco responsável por tratar a exceção faz todo o tratamento. Quando o método que faz o tratamento não é encontrado o o programa é encerrado.
+
+#### Qual é o funcionamento do try, catch e finally?
+
+O conjunto de blocos Try-Catch-Finally é o recurso, à nivel de linguagem de programação, criado para tratar exceções, no bloco try podemos tratar possíveis erros de forma mais robusta, há mais de uma maneira de se utilizar o try podemos colocar cada linha de código que possa lançar uma exceção dentro do seu próprio try e fornecer manipuladores de exceção separados para cada um, ou podemos colocar todo código em um único try e associar vários manipuladores a ele. Com o catch colocamos o tratamento para a exceção que eventualmente ocorra no bloco try, vem logo depois do try e cada bloco do catch é um manipulador de exceção que trata o tipo da exceção indicada por seu argumento, evitando que o programa seja finalizado ao encontrar uma exceção. O finally representa o trecho de código que será executado independente do fato deter ocorrido a exceção ou não, ele é util para mais do que apenas tratamento de exceção, por exemplo, evita que o programador permita que o código de limpeza seja ignorado acidentalmente por um return, continue, ou break, seguindo a documentação da Oracle é importante informar que o finally é uma ferramenta fundamental para evitar vazamentos de recursos.
+
+#### Qual a relação entre “try, catch e finally” e “throws”?
+
+Throws é uma palavra-chave usada em uma assinatura de método e declara quais exceções podem ser lançadas, pode ser útil para propagar exceções na pilha de chamada e permite que não sejam tratadas dentro do método. Quando um método declara que lança uma exceção, não é necessário trata-las, o chamador do método que lança a exceção deve manipula-las para que o fluxo do programa possa ser mantido.
+
+#### Para que serve a annotation @ExceptionHandler?
+
+É usada para tratar exceções de classes de manipulador expecíficas e/ou métodos de manipulador, esses métodos com essa anotação podem ter assinatura muito flexível, podendo aceitar argumentos de diferentes tipos.
+
+#### Para que serve o comando throw?
+
+É usada em um corpo de método ou qualquer bloco de código e é usada para lançar explicitamente uma única exceção, pode ser útil para lançar exceções com base em certas condições dentro de um bloco de código e para exceções personalizadas. As exceções marcadas e não verificadas podem ser marcadas pela palavra-chave throw, quando lançamos uma exceção com throw o fluxo  de execução do programa é interrompido e o controle é transferido para o bloco try-catch mais próximo que corresponde ao tipo de exceção lançada , se nenhuma correspondência for encontrada, o manipulador de exceção padrão encerra o programa.
+
+#### Para que serve a annotation @ControllerAdvice?
+
+É uma especialização da @Component para que seja detectada automaticamente por meio da varredura de caminho de classe, um Controller Advice é um tipo de interceptor que envolve a lógica em nossos Controllers e nos permite aplicar alguma lógica comum a eles, seus métodos são compartihados globalmente em vários componentes para capturar exceções e traduzi-las em respostas HTTP.
+
+##### Referências:
+
+- [https://rollbar.com/blog/how-to-use-the-throws-keyword-in-java-and-when-to-use-throw](https://rollbar.com/blog/how-to-use-the-throws-keyword-in-java-and-when-to-use-throw/#:~:text=The%20table%20below%20lists%20the%20difference%20between%20the,exception%20class%20name%20%201%20more%20rows%20)
+- [https://docs.oracle.com/javase/tutorial](https://docs.oracle.com/javase/tutorial/essential/exceptions/definition.html)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
