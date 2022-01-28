@@ -59,7 +59,13 @@ public class EntryController {
     }
 
     @GetMapping("/calcula{x}/{y}")
-    public Integer calculaMedia(@PathVariable("x") Integer x, @PathVariable("y") Integer y){
-    return entryService.calculaMedia(x,y);
+    public Integer calculaMedia(@PathVariable("x") Integer x, @PathVariable("y") Integer y) throws Exception {
+        try {
+            return entryService.calculaMedia(x,y);
+        }
+        catch (Exception e){
+            throw new Exception("Não é divisivel por 0");
+        }
+
     }
 }
