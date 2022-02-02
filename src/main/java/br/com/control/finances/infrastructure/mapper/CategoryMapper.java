@@ -1,7 +1,7 @@
-package br.com.control.finances.mapper;
+package br.com.control.finances.infrastructure.mapper;
 
-import br.com.control.finances.dto.CategoryDto;
-import br.com.control.finances.entities.Category;
+import br.com.control.finances.domain.dto.CategoryDto;
+import br.com.control.finances.domain.entities.Category;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

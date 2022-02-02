@@ -1,6 +1,6 @@
-package br.com.control.finances.dto;
+package br.com.control.finances.domain.dto;
 
-import br.com.control.finances.entities.Category;
+import br.com.control.finances.domain.entities.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

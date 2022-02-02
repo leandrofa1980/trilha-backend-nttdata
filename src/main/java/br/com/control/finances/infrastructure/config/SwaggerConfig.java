@@ -1,4 +1,4 @@
-package br.com.control.finances.config;
+package br.com.control.finances.infrastructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ public class SwaggerConfig {
     public Docket api(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.control.finances.controller"))
+                .apis(RequestHandlerSelectors.basePackage("br.com.control.finances.application.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

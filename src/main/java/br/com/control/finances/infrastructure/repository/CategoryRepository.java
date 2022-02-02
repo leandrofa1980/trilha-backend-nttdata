@@ -1,6 +1,6 @@
-package br.com.control.finances.repository;
+package br.com.control.finances.infrastructure.repository;
 
-import br.com.control.finances.entities.Category;
+import br.com.control.finances.domain.entities.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {

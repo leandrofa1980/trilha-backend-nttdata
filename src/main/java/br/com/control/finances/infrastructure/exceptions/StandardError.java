@@ -1,4 +1,4 @@
-package br.com.control.finances.exceptions;
+package br.com.control.finances.infrastructure.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

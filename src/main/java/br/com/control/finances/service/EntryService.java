@@ -1,12 +1,12 @@
 package br.com.control.finances.service;
 
-import br.com.control.finances.dto.ChartDto;
-import br.com.control.finances.dto.EntryDto;
-import br.com.control.finances.entities.Category;
-import br.com.control.finances.entities.Entry;
-import br.com.control.finances.mapper.EntryMapper;
-import br.com.control.finances.repository.CategoryRepository;
-import br.com.control.finances.repository.EntryRepository;
+import br.com.control.finances.domain.dto.ChartDto;
+import br.com.control.finances.domain.dto.EntryDto;
+import br.com.control.finances.domain.entities.Category;
+import br.com.control.finances.domain.entities.Entry;
+import br.com.control.finances.infrastructure.mapper.EntryMapper;
+import br.com.control.finances.infrastructure.repository.CategoryRepository;
+import br.com.control.finances.infrastructure.repository.EntryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

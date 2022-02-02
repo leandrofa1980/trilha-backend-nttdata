@@ -1,4 +1,4 @@
-package br.com.control.finances.entities;
+package br.com.control.finances.domain.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

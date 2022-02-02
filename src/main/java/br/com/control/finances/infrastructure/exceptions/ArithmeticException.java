@@ -1,4 +1,4 @@
-package br.com.control.finances.exceptions;
+package br.com.control.finances.infrastructure.exceptions;
 
 public class ArithmeticException extends RuntimeException{
 

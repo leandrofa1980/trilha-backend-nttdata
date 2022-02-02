@@ -1,4 +1,4 @@
-package br.com.control.finances.entities;
+package br.com.control.finances.domain.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

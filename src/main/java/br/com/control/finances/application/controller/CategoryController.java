@@ -1,8 +1,8 @@
-package br.com.control.finances.controller;
+package br.com.control.finances.application.controller;
 
-import br.com.control.finances.dto.CategoryDto;
-import br.com.control.finances.entities.Category;
-import br.com.control.finances.repository.CategoryRepository;
+import br.com.control.finances.domain.dto.CategoryDto;
+import br.com.control.finances.domain.entities.Category;
+import br.com.control.finances.infrastructure.repository.CategoryRepository;
 import br.com.control.finances.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ import java.util.List;
 public class CategoryController {
 
     @Autowired
-    private CategoryService categoryService;
+    private CategoryService categoryService ;
 
     @Autowired
     private CategoryRepository categoryRepository;

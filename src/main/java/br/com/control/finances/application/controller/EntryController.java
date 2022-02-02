@@ -1,9 +1,9 @@
-package br.com.control.finances.controller;
+package br.com.control.finances.application.controller;
 
-import br.com.control.finances.dto.ChartDto;
-import br.com.control.finances.dto.EntryDto;
-import br.com.control.finances.entities.Entry;
-import br.com.control.finances.exceptions.ArithmeticException;
+import br.com.control.finances.domain.dto.ChartDto;
+import br.com.control.finances.domain.dto.EntryDto;
+import br.com.control.finances.domain.entities.Entry;
+import br.com.control.finances.infrastructure.exceptions.ArithmeticException;
 import br.com.control.finances.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

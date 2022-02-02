@@ -1,6 +1,6 @@
-package br.com.control.finances.repository;
+package br.com.control.finances.infrastructure.repository;
 
-import br.com.control.finances.entities.Entry;
+import br.com.control.finances.domain.entities.Entry;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
