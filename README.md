@@ -228,6 +228,8 @@ Vantagens:
 ### Objetivo
 É aprender os conceitos de validação, tratamento e manipulação de dados de forma otimizada.
 
+---
+
 <h2> Deasfio 8 </h2>
 
 ### Objetivo
@@ -262,6 +264,62 @@ Throws é uma palavra-chave usada em uma assinatura de método e declara quais e
 
 - [https://rollbar.com/blog/how-to-use-the-throws-keyword-in-java-and-when-to-use-throw](https://rollbar.com/blog/how-to-use-the-throws-keyword-in-java-and-when-to-use-throw/#:~:text=The%20table%20below%20lists%20the%20difference%20between%20the,exception%20class%20name%20%201%20more%20rows%20)
 - [https://docs.oracle.com/javase/tutorial](https://docs.oracle.com/javase/tutorial/essential/exceptions/definition.html)
+
+---
+
+<h2> Desafio 9</h2>
+
+### Objetivo
+
+Conhecer os principais modelos de design patterns, arquitetura de software e alguns princípios de qualidade de software,
+com o intuito de conhecer fórmulas já validadas de construção de projetos que visam solucionar vários tipos de problemas de
+gestão/organização do código/arquivos, reaproveitamento de código, limitações no desenvolvimento futuro, difícil manutenção, entre outros problemas já identificados pela comunidade e pelos criadores desses padrões e arquiteturas.
+
+#### O que é um padrão de projeto e por que nós os utilizamos?
+
+Descreve um conjunto composto por um contexto, um problema e uma solução. Em outras palavras pode-se descrever um padrão como uma solução para um determinado problema em um projeto de software, o padrão não é um código específico que colocamos dentro do que estamos desenvolvendo e sim um conceito geral, utilizamos o padrão de projeto para encontrar soluções que já tenham sido utilizadas com sucesso em mais de um contexto ou podemos adequa-las para solucionar um problema do projeto, além de melhorar a comunicação entre a equipe.
+
+#### Cite e explique com suas palavras:
+
+- Um dos padrões de criação: O Factory Method é um padrão que fornece uma interface para criar objetos e delegamos a instancia desses objetos para subclasses e por ser dirigido a interfaces se for preciso aumentar os recursos para o factory temos essa possibilidade sem ter que alterar o código.
+
+- Um dos padrões estruturais: Adapter é um padrão de projeto estrutural que permite objetos com interfaces incompatíveis colaborarem entre si, um exemplo é quando temos um sistema que gera tudo em XML e queremos compartilhar o mesmo sistema em Json, com o adapter podemos utilizar o padrão para converter a interface de um objeto demaneira que outro objeto possa compreender as informações.
+
+- Um dos padrões comportamentais: Chain of Responsability é um padrão de projeto comportamental que permite que você passe pedidos por uma corrente de handlers. Ao receber um pedido, cada handler decide se processa o pedido ou o passa adiante para o próximo handler na corrente.
+
+#### Conceito de arquitetura de software e seu proposito:
+
+Podemos dizer que arquitetura envolve as partes que são mais difíceis de mudar, está relacionada com decisões que devemos tormar no projeto que servem de base para o nosso software, é responsável pelo esqueleto e pela infraestrutura de alto nível de um software, é importante para automatizar novos processos ou melhorar os que já existem. Tem como proposito software com flexibilidade, escalabilidade, viabilidade, reutilização e segurança em soluções estruturadas que atenda às expectativas técnicas e de negócios.
+
+#### Qual arquitetura estamos seguindo até o momento? Justifique sua resposta.
+
+Estamos seguindo a arquitetura de camadas, onde destacamos a organização das responsabilidades de cada camada, deixando ela reutilizavél, hoje soluções rodando em browsers, celulares e outros dispositivos mostra que o uso de camadas tem grande valor, o uso de camadas é algo importante na organização e estruturação e quando bem utilizada contribui para que partes do software sejam reutilizáveis e substituíveis, o que indiretamente reflete em menos refatoração e maior qualidade.
+
+#### O que significa a sigla SOLID?
+
+SOLID é um conjunto de princípios e boas práticas para melhorar o design de software e arquitetura, tornando-os mais fáceis de manter, escalar e testar. O nome SOLID é um acrônimo mnemônico dos princípios introduzidos por Robert “Uncle Bob” Martin:
+- Single Responsibility (Responsabilidade Única): Ter somente um princípio, uma responsabilidade, não ter uma classe com muitos métodos que não tem função específica, criar uma classe com um só objetivo;
+- Open Closed (Aberto Fechado): Esse princípio diz que deve ser aberto para extensões e fechado para modificações;
+- Liskov Substitution (Substituição de Liskov): Uma classe derivada pode e deve ser substituível por sua classe base, trabalhar com estruturas semelhantes, se caso precise trocar ou extender métodos o código não ficara engessado;
+- Interface Segregation (Segregação de Interfaces): O princípio fala em quebrar interfaces maiores em menores, os clientes não devem ser forçados a depender de métodos que eles não utilizam, podemos envolver nesse contexto classes abstratas também;
+- Dependence Inversion (Inversão de Dependências): Com esse princípio vamos desacoplar modulos por meio da inversão de dependência, todo sistema é dividido em dois modulos os de alto nível e os de baixo nível, nesse princípio os de alto nível não podem depender dos de baixo nível e ambos devem depender de abstrações e as abstrações não devem depender de detalhes.
+
+####  Quais princípios foram utilizados no projeto até o momento? Explique.
+
+Utilizamos em nosso projeto os princípios de Single Responsability pois nossas classes tem sua única responsabilidade, temos controller que faz a integração com o frontend utilizando de endpoints, service com toda a lógica de negócios, repository integrando com o banco de dados e as excepitions responsáveis por informar ao usúario de forma mais elegante erros na aplicação, o princípio de Open Closed quando estendemos da JpaRepository para usar o métodos no CRUD, quando utilizamos as classes DTO estamos usando o princípio de Liskov Substitution pois temos estruturas semelhantes e substituimos nossa classe base para maior segurança de informações.
+
+
+
+#### Referências:
+
+- [medium.com/@jeziellago/arquitetura-de-software](https://medium.com/@jeziellago/padr%C3%B5es-de-arquitetura-de-software-parte-i-a1d23c323a40)
+- [www.igti.com.br/blog/arquitetura-de-software](https://www.igti.com.br/blog/arquitetura-de-software-definicao-negocios)
+- [dev.to/oieduardorabelo](https://dev.to/oieduardorabelo/arquitetura-de-software-a-diferenca-entre-arquitetura-e-design-1j9e)
+- [guia.dev/pt/pillars/software-architecture](https://guia.dev/pt/pillars/software-architecture/layers.html)
+- [guia.dev/pt/pillars/software-architecture/layers-and-architecture-patterns](https://guia.dev/pt/pillars/software-architecture/layers-and-architecture-patterns.html)
+- [www.venturus.org.br/o-que-e-solid/](https://www.venturus.org.br/o-que-e-solid/#:~:text=O%20nome%20SOLID%20%C3%A9%20um%20acr%C3%B4nimo%20mnem%C3%B4nico%20dos,de%20Interfaces%29%3B%20e%20Dependence%20Inversion%20%28Invers%C3%A3o%20de%20Depend%C3%AAncias%29.)
+
+
 
 
 
