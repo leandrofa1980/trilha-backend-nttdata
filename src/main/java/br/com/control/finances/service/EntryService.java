@@ -21,13 +21,12 @@ import java.util.Optional;
 public class EntryService {
 
     @Autowired
-    private final EntryRepository repository;
+    private EntryRepository repository;
 
     @Autowired
-    private final CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
-    @Autowired
-    private final EntryMapper entryMapper;
+    private EntryMapper entryMapper;
 
     public List<Entry> findAllPaid(Boolean paid){
         if (paid != null) {

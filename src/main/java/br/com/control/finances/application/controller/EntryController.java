@@ -4,23 +4,26 @@ import br.com.control.finances.domain.dto.ChartDto;
 import br.com.control.finances.domain.dto.EntryDto;
 import br.com.control.finances.domain.entities.Entry;
 import br.com.control.finances.infrastructure.exceptions.ArithmeticException;
+import br.com.control.finances.infrastructure.repository.EntryRepository;
 import br.com.control.finances.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
-@Repository
+
 @RestController
 @RequestMapping("/entries")
 public class EntryController {
 
     @Autowired
     private EntryService entryService;
+
+    @Autowired
+    private EntryRepository entryRepository;
 
     @GetMapping
     public ResponseEntity<List<Entry>> findAll(@RequestParam(required = false) Boolean paid){

@@ -16,10 +16,9 @@ import java.util.Optional;
 public class CategoryService {
 
     @Autowired
-    private final CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
-    @Autowired
-    private final CategoryMapper categoryMapper;
+    private CategoryMapper categoryMapper;
 
 
     public List<Category> findAll(){
