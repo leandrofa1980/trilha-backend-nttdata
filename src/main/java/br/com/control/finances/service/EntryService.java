@@ -26,6 +26,7 @@ public class EntryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
     private EntryMapper entryMapper;
 
     public List<Entry> findAllPaid(Boolean paid){
