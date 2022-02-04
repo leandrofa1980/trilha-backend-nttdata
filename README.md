@@ -349,6 +349,190 @@ Utilizamos na trilha: Spring actuator, Spring Data JPA, Validation, Web, Spring 
 - Fazendo o uso do Devtools conseguimos renicializar nossa aplicação a cada alteração que fazemos, tem integração com o livereload que automatiza a cada alteração na aplicação.
 - Com o Spring temos o benefício de otimizar nosso tempo e aumentar a produtividade, ou seja, não temos que gastar tempo desenvolvendo uma aplicação do zero, recebemos do Spring a maioria dos recursos necessário.
 
+#### Descreva os passos de criação de uma Web API Spring boot, com conexão com SQL Server:
+
+- Iniciamos nossa Web API pelo site do [https://start.spring.io/](https://start.spring.io/), escolhemos o tipo do projeto que queremos criar Maven ou Gradle e qual linguagem de programação, o Spring Initializr vem com a versão estável marcada, pode escolher outra versão se prefirir, em Porject Metadata vamos configurar o projeto com o grupo, nome do projeto, nome do pacote, qual pacote (Jar ou War) e versão da linguagem. Em Dependencies vamos escolher quais dependências queremos em nosso projeto, vamos utilizar Spring Web para que nossa aplicação contenha o Tomcat, um banco de dados para salvar, alterar , remover, ou pesquisar por dados, aqui vamos utilizar o Mysql e o Spring Data Jpa para persistir e mapear nossas classes no banco de dados de maneira automática. Agora vamos gerar nosso projeto clicando em generate, um arquivo zip será baixado.
+- Nosso próximo passo é configurar o projeto em uma IDE de sua escolha, primeiro vamos configurar o o drive do Mysql, em application.properties vamos passar uma URL informando qual o tipo do banco de dados, que é mysql, e a porta onde o banco vai rodar, é preciso passar um parâmetro chamado creatDatabaseIfNotExist como true, caso não exista um banco de daods esse parâmetro cria um, completando com o serverTimezone como UTC, evitando que ocorra algum erro. Agora é preciso passar o usúario e uma senha, assim teremos acesso ao banco de dados, vamos editar o application.properties e passar um usúario e senha, em alguns casos a senha pode ser vazia, para que nossas entidades sempre atualizem temos que definer a propriedade do ddl-auto e definir como update para que o banco de dados atualize junto com nossas entidades, nosso arquivo application.properties está pronto:
+
+spring.datasource.url=jdbc:mysql://localhost:3306/produtos?createDatabaseIfNotExist=true&amp;serverTimezone=UTC
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.hibernate.ddl-auto=update
+
+#### Qual a funcionalidade do pom.xml?
+
+Significa Project Object Model, é um arquivo XML que reside no diretório base do projeto, contém informações sobre o projeto e vários detalhes de configuração usados pelo Maven, ao executar uma tarefa ou objeto, o Maven procura o pom no diretório, obtém as informações necessárias e, em seguida, executa. É nele também que adicionamos as dependências de outras bibliotecas que utilizamos no projeto.
+
+#### Qual a funcionalidades do applications.properties?
+
+É um armazenamento chave-valor para propriedades de configuração, é uma ótima opção para uma determinada aplicação que necessita de configurações externas e não pode ser alterada. Um exemplo seria um programa que conecta a um banco de dados e precisa de dados para realizar a conexão, sem que o código fonte do mesmo seja alterado.
+
+#### Qual o propósito das Annotations?
+
+Introduzidas no Java 5 as Annotations são utilizadas para anotar métodos, campos e classes, essas marcações seram tratadas pelo compilador, ferramentas de desenvolvimento e bibliotecas, as anotações são colocadas em cima da classe, método ou atributo que desejamos referenciar.
+
+#### Cite 10 annotations, com suas respectivas finalidades e descreva ou desenhe um cenário exemplificando a sua utilização:
+
+- @SpringBootAplication
+
+Usamos essa anotação para marcar a classe principal de uma aplicação Spring Boot e habilitar uma série de recursos, por exemplo, configuração Spring baseada em Java, varredura de componentes e recursos de configuração automatica do Spring Boot.
+```bash
+    @SpringBootApplication
+    public class ControlFinancesApplication {
+    
+        public static void main(String[] args) {
+            SpringApplication.run(ControlFinancesApplication.class, args);
+        }
+    }
+```
+- @Controller
+
+É uma anotação de nível de classe que informa ao Spring Framework que esta classe serve como um Spring MVC Controller.
+```bash
+    @Controller
+    public class VehicleContorller {
+    // ...
+    }
+```
+- @Service
+
+Usamos a esta anotação para indicar que uma classe pertence a camada de serviço que contém a lógica de negócios de uma aplicação.
+```bash
+    @Service
+    public class VehicleService {
+    // ...
+    }
+```
+- @Repository
+
+As classe DAO ou Repository geralmente representam a camada de acesso ao banco de dados em uma aplicação e devem ter essa anotação.
+```bash
+    @Repository
+    public class VehicleRepository {
+    // ...
+    }
+```
+- @ExceptionHandler
+
+Com esta anotação podemos declarar um método de tratamento de erros personalizados, o Spring chama esse método quando quando um manipulador de solicitações lança qualquer uma das exceções especificadas.
+
+A exceção capturada pode ser passada para o método como argumento:
+```bash
+    @ExceptionHandler(IllegalArgumentException.class)
+    void onIllegalArgumentException(IllegalArgumentException exception){
+    // ...
+    }
+```
+- @PathVariable
+
+Esta anotação indica que um argumento de método está vinculado a uma variável de modelo URI. Podemos especificar o modelo URI com a anotação @RequestMapping e vincular um argumento de método a uma das partes do modelo com @PathVariable.
+```bash
+    @RequestMapping("/{id}")
+    Vehicle getVehicle(@PathVariable("id") long id) {
+    // ...
+    }
+```
+- @GetMapping
+
+Anotação para mapear solicitações HTTP em métodos específicos de manipulador GET, simplificando utiliza o verbo GET buscando informações do banco de dados.
+```bash
+    @GetMapping("/read")
+    public ResponseEntity<List<Category>> read(){
+    // ...
+    }
+```
+- @PostMapping
+
+Utiliza o verbo POST para inserir novos dados no banco de dados, mapear solicitações HTTP POST em métodos específicos de manipulador.
+```bash
+    @PostMapping("/employees")
+    public Employee createEmployee(@Valid @RequestBody Employee employee) {
+    return employeeRepository.save(employee);
+    }
+```
+- @PutMapping
+
+Utilizamos essa anotação para atualizar o recurso usando o método HTTP PUT específico de manipulador em campos do banco de dados.
+```bash
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Entry> update(@Valid @PathVariable("id") Long id, @RequestBody EntryDto entryDto){
+    return ResponseEntity.ok(entryService.update(id, entryDto));
+    }
+```
+- @DeleteMapping
+
+Anotação para mapear solicitações HTTP DELETE que usa o verbo DELETE para excluir dados do banco de dados.
+```bash
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id){
+    entryService.delete(id);
+    return ResponseEntity.noContent().build();
+    }
+``` 
+#### O que é um advice em Spring? Quais os tipos de advice para o Spring?
+
+É a ação executada pelo aspecto em um join point particular, esta ação pode executar antes, após ou memo envolver o join point para decidir se o mesmo deve ser executado. O principal objetivo dos aspectos é apoiar preocupações transversais, como registro, perfil, cache e gerenciamento de transações.
+
+Tipos de advice:
+
+- Before: Advice que executa antes do join point, mas não tem o poder de evitar que o join point execute;
+
+- After returning: Advice que executa após o join point apenas se este terminar de forma bem sucedida;
+
+- After throwing: Advice que executa após o join point quando ele finaliza enviando uma exceção;
+
+- After (finally): Advice que executa após o join point independentemente de sua forma de retorno;
+
+- Around: Advice que envolve a execução de um join point. Este é o tipo mais poderoso de advice, pois pode realizar ações antes e após a execução do join point. Também é de sua responsabilidade decidir se o join point deve ou não ser chamado.
+
+#### Como adicionamos segurança à nossa aplicação Spring?
+
+Utilizamos o Spring Security que é uma estrutura de autenticação e controle de acesso poderosa e altamente personalizável. É o padrão de fato para garantir aplicações baseadas no Spring, é uma estrutura que se concentra em fornecer autenticação e autorização para aplicações Java. Como todos os projetos do Spring o verdadeiro poder da segurança é encontrado na facilidade com que ele pode ser estendido para atender aos requisitos personalizados.
+
+#### Qual é o pacote Spring responsável pelas conexões com os bancos de dados?
+
+- Spirng Data - Tem a missão de facilitar o acesso a bancos de dados relacionais e não relacionais.
+
+#### Explique e exemplifique como criar um agendamento de execução de métodos Spring; Cite exemplos de usabilidade:
+
+Para criar um agendamento podemos usar a anotação @Scheduled do Spring, seguindo algumas regras para usar esse método:
+
+- o método deve normalmente ter um tipo de retorno vazio(se não o valor devolvido será ignorado;
+- o método não deve esperar quaisquer parâmetros.
+
+Vamos ativar tarefas de agendamento por meio da anotação @EnableScheduling, vamos começar configurando uma tarefa para executar após um atraso fixo, esta opção deve ser usada quando cada execução da tarefa for independente:
+
+    @Scheduled(fixedRate = 1000)
+    public void scheduleFixedRateTask() {
+    System.out.println(
+    "Fixed rate task - " + System.currentTimeMillis() / 1000);
+    }
+
+Se quisermos apoiar o comportamento paralelo em tarefas programadas, precisamos adicionar a anotação @Async:
+```bash
+    @EnableAsync
+    public class ScheduledFixedRateExample {
+    @Async
+    @Scheduled(fixedRate = 1000)
+    public void scheduleFixedRateTaskAsync() throws InterruptedException {
+        System.out.println(
+        "Fixed rate task async - " + System.currentTimeMillis() / 1000);
+        Thread.sleep(2000);
+        }
+    }
+```
+#### Referências:
+
+[tutorialspoint.com/maven](https://www.tutorialspoint.com/maven/maven_pom.htm)
+[guilherme-manzano.medium.com/guia-do-spring-framework](https://guilherme-manzano.medium.com/guia-do-spring-framework-spring-boot-spring-mvc-spring-rest-jpa-hibernate-spring-security-6476ca4dbe13https://blog.geekhunter.com.br/tudo-o-que-voce-precisa-saber-sobre-o-spring-boot/)
+[devmedia.com.br/spring-produtividade-e-qualidade-no-desenvolvimento](https://www.devmedia.com.br/spring-produtividade-e-qualidade-no-desenvolvimento/23311)
+[alura.com.br/artigos/primeiros-passos-spring](https://www.alura.com.br/artigos/primeiros-passos-spring)
+[spring.io/projects/spring-framework](https://spring.io/projects/spring-framework)
+[dzone.com/articles/the-springbootapplication-annotation](https://dzone.com/articles/the-springbootapplication-annotation-example-in-ja)
+[baeldung.com/spring-mvc-annotations](https://www.baeldung.com/spring-mvc-annotations)
+[javaguides.net/2018/11/spring-getmapping-postmapping-putmapping-deletemapping](https://www.javaguides.net/2018/11/spring-getmapping-postmapping-putmapping-deletemapping-patchmapping.html)
+[devmedia.com.br/programacao-orientada-a-aspectos-com-o-spring-framework](https://www.devmedia.com.br/programacao-orientada-a-aspectos-com-o-spring-framework-2-0/6781)
+[baeldung.com/spring-scheduled-tasks](https://www.baeldung.com/spring-scheduled-tasks)
 
 
 
