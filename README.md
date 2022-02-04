@@ -523,16 +523,16 @@ Se quisermos apoiar o comportamento paralelo em tarefas programadas, precisamos 
 ```
 #### Referências:
 
-[tutorialspoint.com/maven](https://www.tutorialspoint.com/maven/maven_pom.htm)
-[guilherme-manzano.medium.com/guia-do-spring-framework](https://guilherme-manzano.medium.com/guia-do-spring-framework-spring-boot-spring-mvc-spring-rest-jpa-hibernate-spring-security-6476ca4dbe13https://blog.geekhunter.com.br/tudo-o-que-voce-precisa-saber-sobre-o-spring-boot/)
-[devmedia.com.br/spring-produtividade-e-qualidade-no-desenvolvimento](https://www.devmedia.com.br/spring-produtividade-e-qualidade-no-desenvolvimento/23311)
-[alura.com.br/artigos/primeiros-passos-spring](https://www.alura.com.br/artigos/primeiros-passos-spring)
-[spring.io/projects/spring-framework](https://spring.io/projects/spring-framework)
-[dzone.com/articles/the-springbootapplication-annotation](https://dzone.com/articles/the-springbootapplication-annotation-example-in-ja)
-[baeldung.com/spring-mvc-annotations](https://www.baeldung.com/spring-mvc-annotations)
-[javaguides.net/2018/11/spring-getmapping-postmapping-putmapping-deletemapping](https://www.javaguides.net/2018/11/spring-getmapping-postmapping-putmapping-deletemapping-patchmapping.html)
-[devmedia.com.br/programacao-orientada-a-aspectos-com-o-spring-framework](https://www.devmedia.com.br/programacao-orientada-a-aspectos-com-o-spring-framework-2-0/6781)
-[baeldung.com/spring-scheduled-tasks](https://www.baeldung.com/spring-scheduled-tasks)
+- [tutorialspoint.com/maven](https://www.tutorialspoint.com/maven/maven_pom.htm)
+- [guilherme-manzano.medium.com/guia-do-spring-framework](https://guilherme-manzano.medium.com/guia-do-spring-framework-spring-boot-spring-mvc-spring-rest-jpa-hibernate-spring-security-6476ca4dbe13https://blog.geekhunter.com.br/tudo-o-que-voce-precisa-saber-sobre-o-spring-boot/)
+- [devmedia.com.br/spring-produtividade-e-qualidade-no-desenvolvimento](https://www.devmedia.com.br/spring-produtividade-e-qualidade-no-desenvolvimento/23311)
+- [alura.com.br/artigos/primeiros-passos-spring](https://www.alura.com.br/artigos/primeiros-passos-spring)
+- [spring.io/projects/spring-framework](https://spring.io/projects/spring-framework)
+- [dzone.com/articles/the-springbootapplication-annotation](https://dzone.com/articles/the-springbootapplication-annotation-example-in-ja)
+- [baeldung.com/spring-mvc-annotations](https://www.baeldung.com/spring-mvc-annotations)
+- [javaguides.net/2018/11/spring-getmapping-postmapping-putmapping-deletemapping](https://www.javaguides.net/2018/11/spring-getmapping-postmapping-putmapping-deletemapping-patchmapping.html)
+- [devmedia.com.br/programacao-orientada-a-aspectos-com-o-spring-framework](https://www.devmedia.com.br/programacao-orientada-a-aspectos-com-o-spring-framework-2-0/6781)
+- [baeldung.com/spring-scheduled-tasks](https://www.baeldung.com/spring-scheduled-tasks)
 
 
 
