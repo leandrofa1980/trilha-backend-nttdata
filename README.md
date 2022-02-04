@@ -319,6 +319,36 @@ Utilizamos em nosso projeto os princípios de Single Responsability pois nossas 
 - [guia.dev/pt/pillars/software-architecture/layers-and-architecture-patterns](https://guia.dev/pt/pillars/software-architecture/layers-and-architecture-patterns.html)
 - [www.venturus.org.br/o-que-e-solid/](https://www.venturus.org.br/o-que-e-solid/#:~:text=O%20nome%20SOLID%20%C3%A9%20um%20acr%C3%B4nimo%20mnem%C3%B4nico%20dos,de%20Interfaces%29%3B%20e%20Dependence%20Inversion%20%28Invers%C3%A3o%20de%20Depend%C3%AAncias%29.)
 
+---
+
+<h2>Desafio 10</h2>
+
+### Objetivo
+
+Se aprofundar no universo Spring, conhecendo um pouco mais de perto seu repertório e funcionalidades, saber montar um ambiente Spring, criar uma nova aplicação, realizar as configurações necessárias, aproveitar as facilidades que a ferramenta trás, acelerando o desenvolvimento e otimizando a  performance da aplicação.
+
+#### O que você entende por Spring Framework?
+
+O Spring é um framework Java criado para facilitar o desenvolvimento de aplicações, explorando, para isso, os conceitos de inversão de controle e injeção de dependências, com ele temos uma tecnologia que nos fornece não apenas recursos necessários à grande parte das aplicações, como módulo para persistência de dados, integração, segurança, testes, desenvolvimento web, legibilidade de código maior, implementações com menos código, facilidade na manutenção do código e entrega mais rápida.
+
+#### Cite 3 exemplos de ferramentas Spring e suas respectivas finalidades:
+
+- Spring Data: Fornece um modelo de programação consistente baseado em Spring para acessar dados, facilitando o uso de bancos relacionais e não relacionais, também chamado de projeto guarda-chuva que contém subprojetos específicos para um determinado banco de dados.
+- Spring Security: Se concentra em fornecer autenticação e autorização para aplicativos Java. O verdadeiro poder do Spring Security é encontrado na facilidade com que ele pode ser estendido para atender aos requisitos personalizados.
+- Spring Web Services: Focado em facilitar a criação de serviços Web orientados a documentos, visa facilitar o desenvolvimento de serviços SOAP com contrato em primeiro lugar, permitindo a criação de serviços web flexíveis usando maneiras de manipular cargas XML.
+
+#### Quais ferramentas do Spring foram utilizadas na trilha até o momento?
+
+Utilizamos na trilha: Spring actuator, Spring Data JPA, Validation, Web, Spring Devtools, H2, Lombok.
+
+#### Cite 5 vantagens em utilizar Spring:
+
+- Uma das vantagens do Spring é que ele fornece a maioria dos componentes necessários em uma aplicação de maneira pré-configurada, tornando possível termos uma aplicação rodando em produção rapidamente com o minimo de esforço de configuração.
+- Facilitando ainda mais, temos disponibilizado o Spring Initializr que podemos habilitar os módulos desejados em nosso projeto, gerando um projeto Maven ou Gradle com todos os componentes solicitados e podemos começar a trabalhar com o desenvolvimento do código.
+- O Spring tem um servidor embarcado, então não precisamos baixar um servidor para fazer testes em desenvolvimento como em produção, por padrão o Spring tem o Tomcat configurado como servidor web.
+- Fazendo o uso do Devtools conseguimos renicializar nossa aplicação a cada alteração que fazemos, tem integração com o livereload que automatiza a cada alteração na aplicação.
+- Com o Spring temos o benefício de otimizar nosso tempo e aumentar a produtividade, ou seja, não temos que gastar tempo desenvolvendo uma aplicação do zero, recebemos do Spring a maioria dos recursos necessário.
+
 
 
 
