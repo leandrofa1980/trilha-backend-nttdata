@@ -78,7 +78,7 @@ Pesquisa das vantagens feita em: [apexensino.com.br](https://apexensino.com.br/o
 ---
 
 <h2>
-   Desafio 03
+   Desafio 3
 </h2>
 
 ### Objetivo
@@ -549,12 +549,22 @@ A definição de libs no wikipedia diz que é uma coleção de subprogramas util
 #### Cite 2 libs populares no Java e seu objetivo
 
 - Apach Commons:
-  Estende muitas das bibliotecas Java Core, compreende 43 bubliotecas modulares que abrange domínios como Coleções, Matemática, Classes, Banco de dados entre outros;
+  Estende muitas das bibliotecas Java Core, compreende 43 bibliotecas modulares que abrange domínios como Coleções, Matemática, Classes, Banco de dados entre outros;
 
 
 - Jackson:
   Processa dados para Java, no desenvolvimento processamos dados formatados, uma maneira de transferir dados é por meio de Json que é um formato moderno de troca de dados. Com o Jackson podemos converter POJO em dados ou gerar POJO a partir de dados com a ajuda das anotações de Jackson.
 
+#### Qual é o propósito do Maven, e qual é o seu relacionamento com o arquivo pom.xml?
+
+É uma ferramenta de automação e gerenciamento de projetos Java, é responsável por gerar relatórios de produtividade, garantir execução de teste, gerenciar dependências, controlar versão de artefatos dentre outras, o Maven tem a facilidade de trabalhar com vários módulos de um mesmo sistema e extensão para novar funcionalidades por meio de plugins, além de estimular boas práticas. No arquivo pom.xml contém todas as configurações que o Maven necessita para interagir, ele pode ser simples possuindo as coordenadas do projeto, ou complexo, relacionando dependências, repositórios de plugins, plugins específicos, estrategias de construção de projetos, perfis, entre outros. 
+
+#### Referências
+
+- [wikipedia.org](https://pt.wikipedia.org/wiki/Biblioteca_(computa%C3%A7%C3%A3o))
+- [ichi.pro/pt/as-10-principais-bibliotecas](https://ichi.pro/pt/as-10-principais-bibliotecas-que-todo-desenvolvedor-java-deve-conhecer-61422653275988)
+- [devmedia.com.br/introducao-ao-maven](https://www.devmedia.com.br/introducao-ao-maven/25128)
+- [dclick.com.br/entendendo-archetypes-do-maven](https://www.dclick.com.br/2011/03/28/entendendo-archetypes-do-maven/)
 
 
 
