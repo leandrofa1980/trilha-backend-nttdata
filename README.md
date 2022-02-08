@@ -559,12 +559,33 @@ A definição de libs no wikipedia diz que é uma coleção de subprogramas util
 
 É uma ferramenta de automação e gerenciamento de projetos Java, é responsável por gerar relatórios de produtividade, garantir execução de teste, gerenciar dependências, controlar versão de artefatos dentre outras, o Maven tem a facilidade de trabalhar com vários módulos de um mesmo sistema e extensão para novar funcionalidades por meio de plugins, além de estimular boas práticas. No arquivo pom.xml contém todas as configurações que o Maven necessita para interagir, ele pode ser simples possuindo as coordenadas do projeto, ou complexo, relacionando dependências, repositórios de plugins, plugins específicos, estrategias de construção de projetos, perfis, entre outros. 
 
+#### Qual é a diferença do Maven para o Grandle?
+
+São duas ferramentas para o processo de build de um projeto em qualquer linguagem JVM. O Gradle é uma ferramenta mais robusta, os scripts do Gradle são declarativos, de fácil leitura, escreve código em Groovy ao invés de XML, gestão de dependências robusta, build escaláveis, tem suporte corporativo build contínuo entre outros.
+
+#### Com os conhecimentos adquiridos até o agora, realize uma conexão com o desafio 3 onde falamos sobre JDBC, os drivers de comunicação com os bancos de dados.
+
+#### I. Qual a relação entre os termos lib, driver e JDBC?
+
+O JDBC é baseado em drivers, para funcionar os drivers precisam estar carregados na memória, no lib ficam os arquivos .jar e as bibliotecas externas.
+
+#### II. Como é adicionado uma lib no projeto?
+
+Utilizando o Maven pelo seu gerenciador.
+
+#### III.  Escolha  um  banco  de  dados  (menos  o  H2)  e  explique  como  utilizar  o  driver  de  comunicação.
+
+
+Primeiro precisamos instalar a dependência do banco de dados no pom.xml, agora precisamos configurar o driver do banco de dados em application.properties, passando uma URL com o driver, porta onde o banco vai rodar, alguns drivers já vem com a porta default se utilizarmos outra porta devemos informar qual é essa porta, o nome do banco de dados seguido do time zone, usúario e senha, para ter uma comunicação com o banco.
+
 #### Referências
 
 - [wikipedia.org](https://pt.wikipedia.org/wiki/Biblioteca_(computa%C3%A7%C3%A3o))
 - [ichi.pro/pt/as-10-principais-bibliotecas](https://ichi.pro/pt/as-10-principais-bibliotecas-que-todo-desenvolvedor-java-deve-conhecer-61422653275988)
 - [devmedia.com.br/introducao-ao-maven](https://www.devmedia.com.br/introducao-ao-maven/25128)
 - [dclick.com.br/entendendo-archetypes-do-maven](https://www.dclick.com.br/2011/03/28/entendendo-archetypes-do-maven/)
+- [devmedia.com.br/jdbc-tutorial](https://www.devmedia.com.br/jdbc-tutorial/6638)
+- [giuliana-bezerra.medium.com](https://giuliana-bezerra.medium.com/gerenciador-dependencias-com-o-mavem-em-projetos-java-6703fce91fb6)
 
 
 
