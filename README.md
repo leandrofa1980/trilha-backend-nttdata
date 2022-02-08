@@ -534,6 +534,28 @@ Se quisermos apoiar o comportamento paralelo em tarefas programadas, precisamos 
 - [devmedia.com.br/programacao-orientada-a-aspectos-com-o-spring-framework](https://www.devmedia.com.br/programacao-orientada-a-aspectos-com-o-spring-framework-2-0/6781)
 - [baeldung.com/spring-scheduled-tasks](https://www.baeldung.com/spring-scheduled-tasks)
 
+---
+
+<h2> Desafio 11 </h2>
+
+### Objetivo
+
+Entender para que servem as libs, e como funciona o gerenciamento de dependências de um projeto.
+
+#### O que são libs quando se trata de código?
+
+A definição de libs no wikipedia diz que é uma coleção de subprogramas utilizados no desenvolvimento de software. Tem como função facilitar o desenvolvimento garantindo mais agilidade e menos erro, geralmente essa coleção é criada por outros desenvolvedores que resolveram determinado problema e que já foram testadas.
+
+#### Cite 2 libs populares no Java e seu objetivo
+
+- Apach Commons:
+  Estende muitas das bibliotecas Java Core, compreende 43 bubliotecas modulares que abrange domínios como Coleções, Matemática, Classes, Banco de dados entre outros;
+
+
+- Jackson:
+  Processa dados para Java, no desenvolvimento processamos dados formatados, uma maneira de transferir dados é por meio de Json que é um formato moderno de troca de dados. Com o Jackson podemos converter POJO em dados ou gerar POJO a partir de dados com a ajuda das anotações de Jackson.
+
+
 
 
 
