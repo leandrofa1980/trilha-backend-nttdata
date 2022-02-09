@@ -587,6 +587,19 @@ Primeiro precisamos instalar a dependência do banco de dados no pom.xml, agora 
 - [devmedia.com.br/jdbc-tutorial](https://www.devmedia.com.br/jdbc-tutorial/6638)
 - [giuliana-bezerra.medium.com](https://giuliana-bezerra.medium.com/gerenciador-dependencias-com-o-mavem-em-projetos-java-6703fce91fb6)
 
+---
+
+<h2>Desafio 12</h2>
+
+### Objetivo
+
+Entender sobre testes unitários, stack tracer(pilha de erros) compreendendo melhor o funcionamento do código, e análise de um possível erro no sistema.
+
+#### Explique o conceito de teste unitário?
+
+Teste unitário compreende em verificar a menor parte de uma aplicação, em linguagens orientada a objetos, essa menor parte pode ser um método de uma classe, ou função em linguagem de paradígma funcional. 
+
+
 
 
 
