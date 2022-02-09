@@ -599,7 +599,34 @@ Entender sobre testes unitários, stack tracer(pilha de erros) compreendendo mel
 
 Teste unitário compreende em verificar a menor parte de uma aplicação, em linguagens orientada a objetos, essa menor parte pode ser um método de uma classe, ou função em linguagem de paradígma funcional. 
 
+#### Descreva como fazer um código de teste:
 
+É preciso criar uma classe testes no pacote de testes, usamos a anotação @Test para o Junit entender que é um método testável, o nome do nosso método deve mostrar o que exatamente queremos que ele faça exemplo: 'somarDoisValores', agora vamos indicar o que queremos passando duas variáveis referente aos valores da soma, vamos cria nosso objeto e chamar o método que queremos testar, agora usamos o assert que realiza o teste comparando o resultado ou o comportamento do código sendo testado, no nosso exemplo o 'assertEquas' indica que estamos querendo afirmar algo. Pronto nosso teste comportando-se como projetado será validado.
+
+Código exemplo:
+```bash
+public class AdicaoTeste {
+  @Test
+  public void somarDoisValores(){
+    int a = 1;
+    int b = 2;
+    Adicao adicao = new Adicao();
+    int soma = adicao.soma(a, b);
+
+    assertEquals(3, soma);
+  }
+}
+```
+
+#### Qual o intuito do teste unitário?
+
+É importante saber que testes unitários servem para garantir que uma aplicação continue funcionando após alterações em sua base de código. Teste unitário precisa funcionar isoladamente para funcionar rapidamente, é esperado no teste unitário validar que cada unidade de trabalho se comporte como projetada, esperada ou pretendida, mas o teste unitário tem o verdadeiro propósito de fornecer um feedback sobre o projeto e a implementação do código.É importante saber que testes unitários servem para garantir que uma aplicação continue funcionando após alterações em sua base de código.
+
+#### Referências
+
+- [digite.com/pt-br/agile/testes-unitarios/](https://www.digite.com/pt-br/agile/testes-unitarios/)
+- [devmedia.com.br/e-ai-como-voce-testa-seus-codigos](https://www.devmedia.com.br/e-ai-como-voce-testa-seus-codigos/39478#:~:text=O%20que%20s%C3%A3o%20testes%20unit%C3%A1rios%3F%20Os%20testes%20unit%C3%A1rios,a%20partir%20da%20cria%C3%A7%C3%A3o%20de%20classes%20de%20testes.)
+- [devmedia.com.br/test-driven-development](https://www.devmedia.com.br/test-driven-development-tdd-simples-e-pratico/18533)
 
 
 
