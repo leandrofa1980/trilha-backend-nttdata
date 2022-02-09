@@ -622,12 +622,19 @@ public class AdicaoTeste {
 
 É importante saber que testes unitários servem para garantir que uma aplicação continue funcionando após alterações em sua base de código. Teste unitário precisa funcionar isoladamente para funcionar rapidamente, é esperado no teste unitário validar que cada unidade de trabalho se comporte como projetada, esperada ou pretendida, mas o teste unitário tem o verdadeiro propósito de fornecer um feedback sobre o projeto e a implementação do código.É importante saber que testes unitários servem para garantir que uma aplicação continue funcionando após alterações em sua base de código.
 
+#### Quais  são  as  ferramentas  que  utilizamos  para  realizar  testes  unitários cite 2:
+
+- Junit é uma API de código aberto para criação de testes unitários em Java, fornece anotações e métodos que precisamos para nossos teste, foi a primeira criada para esse fim e que influenciou o surgimento de muitas outras.
+
+- PyUnit é uma biblioteca para realização de testes unitários em Python baseada na arquitetura xUnit, foi criada com o intuito de trazer todos os recursos que já haviam no Junit, o PyUnit evoluiu a explorar plenamente os recursos da linguagem e se adequar ao jeito pythonico de escrever código.
+
 #### Referências
 
 - [digite.com/pt-br/agile/testes-unitarios/](https://www.digite.com/pt-br/agile/testes-unitarios/)
 - [devmedia.com.br/e-ai-como-voce-testa-seus-codigos](https://www.devmedia.com.br/e-ai-como-voce-testa-seus-codigos/39478#:~:text=O%20que%20s%C3%A3o%20testes%20unit%C3%A1rios%3F%20Os%20testes%20unit%C3%A1rios,a%20partir%20da%20cria%C3%A7%C3%A3o%20de%20classes%20de%20testes.)
 - [devmedia.com.br/test-driven-development](https://www.devmedia.com.br/test-driven-development-tdd-simples-e-pratico/18533)
-
+- [devmedia.com.br/exemplo/documentacao-junit](https://www.devmedia.com.br/exemplo/documentacao-teste-unitario/84?parte=25)
+- [devmedia.com.br/exemplo/documentacao-teste-unitario](https://www.devmedia.com.br/exemplo/documentacao-teste-unitario/84?parte=10)
 
 
 
