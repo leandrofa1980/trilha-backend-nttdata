@@ -4,6 +4,7 @@ import br.com.control.finances.domain.dto.ChartDto;
 import br.com.control.finances.domain.dto.EntryDto;
 import br.com.control.finances.domain.entities.Category;
 import br.com.control.finances.domain.entities.Entry;
+import br.com.control.finances.infrastructure.exceptions.GetEntryPendingException;
 import br.com.control.finances.infrastructure.mapper.EntryMapper;
 import br.com.control.finances.infrastructure.repository.CategoryRepository;
 import br.com.control.finances.infrastructure.repository.EntryRepository;
@@ -21,7 +22,7 @@ import java.util.Optional;
 public class EntryService {
 
     @Autowired
-    private EntryRepository repository;
+    private EntryRepository entryRepository;
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -31,13 +32,13 @@ public class EntryService {
 
     public List<Entry> findAllPaid(Boolean paid){
         if (paid != null) {
-            return repository.findByPaid(paid);
+            return entryRepository.findByPaid(paid);
         }
-        return repository.findAll();
+        return entryRepository.findAll();
     }
 
     public Entry findById(Long id){
-        Optional<Entry> idRead = repository.findById(id);
+        Optional<Entry> idRead = entryRepository.findById(id);
         return idRead.get();
     }
 
@@ -47,15 +48,15 @@ public class EntryService {
 
     public Entry validateCategoryById(EntryDto entryDto) {
         if (categoryRepository.findById(entryDto.getCategory().getId()).isPresent()){
-            return repository.save(entryMapper.dtoToEntity(entryDto));
+            return entryRepository.save(entryMapper.dtoToEntity(entryDto));
         }
         return null;
     }
 
     public Entry update (Long id, EntryDto entryDto){
-        Entry upEntry = repository.getById(id);
+        Entry upEntry = entryRepository.getById(id);
         updateEntry(upEntry, entryDto);
-        return repository.save(upEntry);
+        return entryRepository.save(upEntry);
     }
 
     private void updateEntry(Entry upEntry, EntryDto entryDto) {
@@ -68,7 +69,7 @@ public class EntryService {
     }
 
     public void delete (Long id){
-        repository.deleteById(id);
+        entryRepository.deleteById(id);
     }
 
     public List<ChartDto> amount(){
@@ -92,5 +93,15 @@ public class EntryService {
 
     public Integer calculaMedia(Integer x, Integer y){
         return x/y;
+    }
+    public List<Entry> getEntryPending(String data, BigDecimal amount, Boolean paid) throws GetEntryPendingException{
+        try {
+            if (data != null || amount != null || paid != null){
+                return entryRepository.getEntryPending(data, amount, paid);
+            }
+        }catch (GetEntryPendingException ex){
+            throw new GetEntryPendingException("Parâmetros com valores errados");
+        }
+        return entryRepository.findAll();
     }
 }

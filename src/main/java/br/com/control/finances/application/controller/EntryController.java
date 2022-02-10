@@ -4,17 +4,21 @@ import br.com.control.finances.domain.dto.ChartDto;
 import br.com.control.finances.domain.dto.EntryDto;
 import br.com.control.finances.domain.entities.Entry;
 import br.com.control.finances.infrastructure.exceptions.ArithmeticException;
+import br.com.control.finances.infrastructure.exceptions.GetEntryPendingException;
+import br.com.control.finances.infrastructure.exceptions.StandardError;
 import br.com.control.finances.infrastructure.repository.EntryRepository;
 import br.com.control.finances.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 
-
+@Qualifier("controller")
 @RestController
 @RequestMapping("/entries")
 public class EntryController {
@@ -71,5 +75,13 @@ public class EntryController {
             throw new ArithmeticException("Não é divisivel por 0");
         }
 
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<Entry>> getEntryDependents(
+            @RequestParam(value = "data", required = false) String data,
+            @RequestParam(value = "amount", required = false) BigDecimal amount,
+            @RequestParam(value = "paid", required = false) boolean paid) throws GetEntryPendingException, NullPointerException {
+        return new ResponseEntity<>(entryService.getEntryPending(data, amount, paid), HttpStatus.OK);
     }
 }
