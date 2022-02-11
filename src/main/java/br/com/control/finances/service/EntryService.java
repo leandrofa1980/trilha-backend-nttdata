@@ -4,6 +4,7 @@ import br.com.control.finances.domain.dto.ChartDto;
 import br.com.control.finances.domain.dto.EntryDto;
 import br.com.control.finances.domain.entities.Category;
 import br.com.control.finances.domain.entities.Entry;
+import br.com.control.finances.infrastructure.exceptions.GetEntryListException;
 import br.com.control.finances.infrastructure.exceptions.GetEntryPendingException;
 import br.com.control.finances.infrastructure.mapper.EntryMapper;
 import br.com.control.finances.infrastructure.repository.CategoryRepository;
@@ -11,11 +12,13 @@ import br.com.control.finances.infrastructure.repository.EntryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -94,14 +97,19 @@ public class EntryService {
     public Integer calculaMedia(Integer x, Integer y){
         return x/y;
     }
-    public List<Entry> getEntryPending(String data, BigDecimal amount, Boolean paid) throws GetEntryPendingException{
+
+    public List<Entry> getEntryPending(String date, BigDecimal amount, Boolean paid) throws GetEntryPendingException{
         try {
-            if (data != null || amount != null || paid != null){
-                return entryRepository.getEntryPending(data, amount, paid);
+            if (paid != null || amount != null || date != null){
+               // return getEntryPending(data, amount, paid);
+                return entryRepository.findByPaidOrAmountOrDate(paid, amount, date);
+            }
+            else{
+                throw new GetEntryPendingException("Parâmetros com valores errados");
+
             }
         }catch (GetEntryPendingException ex){
-            throw new GetEntryPendingException("Parâmetros com valores errados");
+            throw new GetEntryListException("Não existe os dados pelo parâmetro passado");
         }
-        return entryRepository.findAll();
     }
 }
