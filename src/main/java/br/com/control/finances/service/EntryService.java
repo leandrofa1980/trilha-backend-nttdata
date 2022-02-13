@@ -68,7 +68,7 @@ public class EntryService {
         upEntry.setType(entryDto.getType());
         upEntry.setAmount(entryDto.getAmount());
         upEntry.setDate(entryDto.getDate());
-        upEntry.setPaid(entryDto.isPaid());
+        upEntry.setPaid(entryDto.getPaid());
     }
 
     public void delete (Long id){
@@ -99,15 +99,21 @@ public class EntryService {
     }
 
     public List<Entry> getEntryPending(String date, BigDecimal amount, Boolean paid) throws GetEntryPendingException, GetEntryListException{
-            if (date == null || amount == null){
-                throw new GetEntryPendingException("Parâmetros com valores errados");
-
-            }
-            else if (date == "" || amount.equals(0)){
-                throw new GetEntryListException("Não existe os dados pelo parâmetro passado");
-            }
-            else{
-                return entryRepository.findByPaidOrAmountOrDate(paid, amount, date);
-            }
+        if (date == null || amount == null){
+            throw new GetEntryPendingException("Parâmetros com valores errados");
+        }
+        else if (date == "" || amount.equals(0)){
+            throw new GetEntryListException("Não existe os dados pelo parâmetro passado");
+        }/*
+        else {
+            return entryRepository.findByPaidOrAmountOrDate(paid, amount, date);
+        }*/
+        List<Entry> entryNewList = entryRepository.findAll()
+                .stream()
+                .filter((Entry entry) -> entry.getDate().equals(date)
+                && entry.getAmount().equals(amount)
+                && entry.getPaid() == paid)
+                .collect(Collectors.toList());
+        return entryNewList;
     }
 }

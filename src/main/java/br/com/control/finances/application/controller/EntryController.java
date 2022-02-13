@@ -84,7 +84,8 @@ public class EntryController {
             @RequestParam(value = "amount", required = false) BigDecimal amount,
             @RequestParam(value = "paid", required = false) boolean paid) throws GetEntryPendingException,
             GetEntryListException, NullPointerException {
-        try {
+        return ResponseEntity.ok(entryService.getEntryPending(date, amount, paid));
+        /*try {
             return ResponseEntity.ok(entryService.getEntryPending(date, amount, paid));
         }
         catch (GetEntryPendingException ex){
@@ -93,6 +94,6 @@ public class EntryController {
         catch (GetEntryListException exception){
             throw new GetEntryListException("Não existe os dados pelo parâmetro passado");
         }
-
+*/
     }
 }
