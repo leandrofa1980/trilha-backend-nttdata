@@ -18,19 +18,19 @@ public class ControllerExceptionsHandler {
         StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
         return  ResponseEntity.status(status).body(err);
     }
-    @ExceptionHandler({ GetEntryPendingException.class})
+    @ExceptionHandler({GetEntryPendingException.class})
     public ResponseEntity<StandardError> getEntryPendingException(GetEntryPendingException ex,HttpServletRequest request){
-        String errorPending = "Parâmetros com valores errados";
+        String errorPending = "Erro, parâmetros com valores invalidos";
         HttpStatus status = HttpStatus.NOT_FOUND;
-        StandardError error = new StandardError(Instant.now(), status.value(), errorPending, ex.getMessage(), request.getRequestURI());
-        return  ResponseEntity.status(status).body(error);
+        StandardError err = new StandardError(Instant.now(), status.value(), errorPending, ex.getMessage(), request.getRequestURI());
+        return  ResponseEntity.status(status).body(err);
     }
 
-    @ExceptionHandler({ GetEntryListException.class})
-    public ResponseEntity<StandardError> getEntrylistException(GetEntryListException exception,HttpServletRequest request){
-        String errorList = "Não existe os dados pelo parâmetro passado";
+    @ExceptionHandler({GetEntryListException.class})
+    public ResponseEntity<StandardError> getEntryListException(GetEntryListException exception,HttpServletRequest request){
+        String errorList = "Erro, parâmetros passado invalidos";
         HttpStatus status = HttpStatus.NO_CONTENT;
-        StandardError erroGet = new StandardError(Instant.now(), status.value(), errorList, exception.getMessage(), request.getRequestURI());
-        return  ResponseEntity.status(status).body(erroGet);
+        StandardError err = new StandardError(Instant.now(), status.value(), errorList, exception.getMessage(), request.getRequestURI());
+        return  ResponseEntity.status(status).body(err);
     }
 }

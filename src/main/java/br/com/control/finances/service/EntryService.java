@@ -98,18 +98,16 @@ public class EntryService {
         return x/y;
     }
 
-    public List<Entry> getEntryPending(String date, BigDecimal amount, Boolean paid) throws GetEntryPendingException{
-        try {
-            if (paid != null || amount != null || date != null){
-               // return getEntryPending(data, amount, paid);
-                return entryRepository.findByPaidOrAmountOrDate(paid, amount, date);
-            }
-            else{
+    public List<Entry> getEntryPending(String date, BigDecimal amount, Boolean paid) throws GetEntryPendingException, GetEntryListException{
+            if (date == null || amount == null){
                 throw new GetEntryPendingException("Parâmetros com valores errados");
 
             }
-        }catch (GetEntryPendingException ex){
-            throw new GetEntryListException("Não existe os dados pelo parâmetro passado");
-        }
+            else if (date == "" || amount.equals(0)){
+                throw new GetEntryListException("Não existe os dados pelo parâmetro passado");
+            }
+            else{
+                return entryRepository.findByPaidOrAmountOrDate(paid, amount, date);
+            }
     }
 }
