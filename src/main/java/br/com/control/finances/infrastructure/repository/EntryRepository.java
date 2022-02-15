@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface EntryRepository extends JpaRepository<Entry, Long> {
     List<Entry> findByPaid(boolean paid);
-    List<Entry> getEntryPending(String data, BigDecimal amount, boolean paid);
 }

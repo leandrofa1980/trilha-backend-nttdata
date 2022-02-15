@@ -97,7 +97,7 @@ public class EntryService {
     public List<Entry> getEntryPending(String data, BigDecimal amount, Boolean paid) throws GetEntryPendingException{
         try {
             if (data != null || amount != null || paid != null){
-                return entryRepository.getEntryPending(data, amount, paid);
+                return getEntryPending(data, amount, paid);
             }
         }catch (GetEntryPendingException ex){
             throw new GetEntryPendingException("Parâmetros com valores errados");
