@@ -4,6 +4,7 @@ import br.com.control.finances.domain.dto.ChartDto;
 import br.com.control.finances.domain.dto.EntryDto;
 import br.com.control.finances.domain.entities.Entry;
 import br.com.control.finances.infrastructure.exceptions.ArithmeticException;
+import br.com.control.finances.infrastructure.exceptions.GetEntryListException;
 import br.com.control.finances.infrastructure.exceptions.GetEntryPendingException;
 import br.com.control.finances.infrastructure.exceptions.StandardError;
 import br.com.control.finances.infrastructure.repository.EntryRepository;
@@ -79,9 +80,20 @@ public class EntryController {
 
     @GetMapping("/filter")
     public ResponseEntity<List<Entry>> getEntryDependents(
-            @RequestParam(value = "data", required = false) String data,
+            @RequestParam(value = "date", required = false) String date,
             @RequestParam(value = "amount", required = false) BigDecimal amount,
-            @RequestParam(value = "paid", required = false) boolean paid) throws GetEntryPendingException, NullPointerException {
-        return new ResponseEntity<>(entryService.getEntryPending(data, amount, paid), HttpStatus.OK);
+            @RequestParam(value = "paid", required = false) boolean paid) throws GetEntryPendingException,
+            GetEntryListException, NullPointerException {
+        return ResponseEntity.ok(entryService.getEntryPending(date, amount, paid));
+        /*try {
+            return ResponseEntity.ok(entryService.getEntryPending(date, amount, paid));
+        }
+        catch (GetEntryPendingException ex){
+            throw new GetEntryPendingException("Parâmetros com valores errados");
+        }
+        catch (GetEntryListException exception){
+            throw new GetEntryListException("Não existe os dados pelo parâmetro passado");
+        }
+*/
     }
 }

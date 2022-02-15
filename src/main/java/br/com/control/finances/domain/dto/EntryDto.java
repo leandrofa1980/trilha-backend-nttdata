@@ -36,7 +36,7 @@ public class EntryDto {
     private String date;
 
     @NotNull(message = "{paid.not.null}")
-    private boolean paid;
+    private Boolean paid;
 
     private Category category;
 

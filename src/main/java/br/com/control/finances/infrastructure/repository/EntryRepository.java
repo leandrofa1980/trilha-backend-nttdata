@@ -10,4 +10,8 @@ import java.util.List;
 @Repository
 public interface EntryRepository extends JpaRepository<Entry, Long> {
     List<Entry> findByPaid(boolean paid);
+<<<<<<< HEAD
+=======
+    List<Entry> findByPaidOrAmountOrDate(boolean paid, BigDecimal amount, String date);
+>>>>>>> d935c29d3e1e8631ca6b5646e73ea057524dc1b3
 }

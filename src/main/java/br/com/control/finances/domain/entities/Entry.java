@@ -22,7 +22,7 @@ public class Entry {
     private String type;
     private BigDecimal amount;
     private String date;
-    private boolean paid;
+    private Boolean paid;
 
     @ManyToOne
     @JoinColumn(name = "category")

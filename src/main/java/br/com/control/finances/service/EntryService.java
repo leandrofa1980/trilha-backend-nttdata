@@ -4,6 +4,7 @@ import br.com.control.finances.domain.dto.ChartDto;
 import br.com.control.finances.domain.dto.EntryDto;
 import br.com.control.finances.domain.entities.Category;
 import br.com.control.finances.domain.entities.Entry;
+import br.com.control.finances.infrastructure.exceptions.GetEntryListException;
 import br.com.control.finances.infrastructure.exceptions.GetEntryPendingException;
 import br.com.control.finances.infrastructure.mapper.EntryMapper;
 import br.com.control.finances.infrastructure.repository.CategoryRepository;
@@ -11,11 +12,13 @@ import br.com.control.finances.infrastructure.repository.EntryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -65,7 +68,7 @@ public class EntryService {
         upEntry.setType(entryDto.getType());
         upEntry.setAmount(entryDto.getAmount());
         upEntry.setDate(entryDto.getDate());
-        upEntry.setPaid(entryDto.isPaid());
+        upEntry.setPaid(entryDto.getPaid());
     }
 
     public void delete (Long id){
@@ -94,14 +97,32 @@ public class EntryService {
     public Integer calculaMedia(Integer x, Integer y){
         return x/y;
     }
+<<<<<<< HEAD
     public List<Entry> getEntryPending(String data, BigDecimal amount, Boolean paid) throws GetEntryPendingException{
         try {
             if (data != null || amount != null || paid != null){
                 return getEntryPending(data, amount, paid);
             }
         }catch (GetEntryPendingException ex){
+=======
+
+    public List<Entry> getEntryPending(String date, BigDecimal amount, Boolean paid) throws GetEntryPendingException, GetEntryListException{
+        if (date == null || amount == null){
+>>>>>>> d935c29d3e1e8631ca6b5646e73ea057524dc1b3
             throw new GetEntryPendingException("Parâmetros com valores errados");
         }
-        return entryRepository.findAll();
+        else if (date == "" || amount.equals(0)){
+            throw new GetEntryListException("Não existe os dados pelo parâmetro passado");
+        }/*
+        else {
+            return entryRepository.findByPaidOrAmountOrDate(paid, amount, date);
+        }*/
+        List<Entry> entryNewList = entryRepository.findAll()
+                .stream()
+                .filter((Entry entry) -> entry.getDate().equals(date)
+                && entry.getAmount().equals(amount)
+                && entry.getPaid() == paid)
+                .collect(Collectors.toList());
+        return entryNewList;
     }
 }
