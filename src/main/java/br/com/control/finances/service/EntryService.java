@@ -94,7 +94,7 @@ public class EntryService {
     }
 
     public Integer calculaMedia(Integer x, Integer y){
-        return x/y;q
+        return x/y;
     }
 
     public List<Entry> getEntryPending(String date, BigDecimal amount, Boolean paid) throws GetEntryPendingException, GetEntryListException{
