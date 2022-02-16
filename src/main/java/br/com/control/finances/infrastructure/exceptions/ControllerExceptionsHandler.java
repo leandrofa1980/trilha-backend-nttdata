@@ -29,7 +29,7 @@ public class ControllerExceptionsHandler {
     @ExceptionHandler({GetEntryListException.class})
     public ResponseEntity<StandardError> getEntryListException(GetEntryListException exception,HttpServletRequest request){
         String errorList = "Erro, parâmetros passado invalidos";
-        HttpStatus status = HttpStatus.NO_CONTENT;
+        HttpStatus status = HttpStatus.ACCEPTED;
         StandardError err = new StandardError(Instant.now(), status.value(), errorList, exception.getMessage(), request.getRequestURI());
         return  ResponseEntity.status(status).body(err);
     }

@@ -12,7 +12,6 @@ import br.com.control.finances.infrastructure.repository.EntryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -95,20 +94,11 @@ public class EntryService {
     }
 
     public Integer calculaMedia(Integer x, Integer y){
-        return x/y;
+        return x/y;q
     }
-<<<<<<< HEAD
-    public List<Entry> getEntryPending(String data, BigDecimal amount, Boolean paid) throws GetEntryPendingException{
-        try {
-            if (data != null || amount != null || paid != null){
-                return getEntryPending(data, amount, paid);
-            }
-        }catch (GetEntryPendingException ex){
-=======
 
     public List<Entry> getEntryPending(String date, BigDecimal amount, Boolean paid) throws GetEntryPendingException, GetEntryListException{
         if (date == null || amount == null){
->>>>>>> d935c29d3e1e8631ca6b5646e73ea057524dc1b3
             throw new GetEntryPendingException("Parâmetros com valores errados");
         }
         else if (date == "" || amount.equals(0)){
@@ -117,7 +107,7 @@ public class EntryService {
         else {
             return entryRepository.findByPaidOrAmountOrDate(paid, amount, date);
         }*/
-        List<Entry> entryNewList = entryRepository.findAll()
+        List<Entry> entryNewList = entryRepository.findByPaidOrAmountOrDate(paid, amount, date)
                 .stream()
                 .filter((Entry entry) -> entry.getDate().equals(date)
                 && entry.getAmount().equals(amount)
