@@ -5,6 +5,7 @@ import br.com.control.finances.domain.entities.Entry;
 import br.com.control.finances.infrastructure.mapper.EntryMapper;
 import br.com.control.finances.infrastructure.repository.EntryRepository;
 import br.com.control.finances.service.EntryService;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -40,6 +41,9 @@ public class TrilhaBackTestes {
     @Test
     public void whenGetEntryDependentsInformedThenCheckTheReturn(){
         //given
+       /* EntryDto entryDto = TrilhaBackBuilderTest.builder().build().toEntryDto();
+        Entry expectedReturnTest = entryMapper.dtoToEntity(entryDto);*/
+
         /*EntryDto entryDto = new EntryDto();
         entryDto.setDate(entryDto.getDate());
         entryDto.setAmount(entryDto.getAmount());
@@ -47,27 +51,36 @@ public class TrilhaBackTestes {
         Entry newEntryTest = entryMapper.dtoToEntity(entryDto);*/
 
         List<Entry> entryList = new ArrayList<>();
-        Entry entries = new Entry();
-        entries.setDate(entries.getDate());
+        Entry entries = TrilhaBackBuilderTest.builder().build().entryPendentsList();
+        /*entries.setDate(entries.getDate());
         entries.setAmount(entries.getAmount());
-        entries.setPaid(entries.getPaid());
+        entries.setPaid(entries.getPaid());*/
         entryList.add(entries);
 
         //when
         /*when(entryRepository.findByPaidOrAmountOrDate(entryDto.getPaid(),
                 entryDto.getAmount(),
                 entryDto.getDate()))
-        .thenReturn(Collections.singletonList(newEntryTest));*/
+        .thenReturn(Collections.singletonList(expectedReturnTest));*/
 
-        when(entryService.getEntryPending(entries.getDate(),
+        when(entryRepository.findByPaidOrAmountOrDate(entries.getPaid(),
                 entries.getAmount(),
-                entries.getPaid()))
+                entries.getDate()))
         .thenReturn(Collections.singletonList(entries));
 
         //then
-        List<Entry> verifyGetEntryPending = entryService.getEntryPending("17/09/2021", BigDecimal.valueOf(4405.49), true);
+       /* EntryDto getEntryDto = (EntryDto) entryService.getEntryPending("17/09/2021", BigDecimal.valueOf(4405.49), true);
 
-        Assertions.assertEquals(entries, verifyGetEntryPending);
+        Assert.assertEquals(entryDto.getAmount(), getEntryDto.getAmount());
+        Assert.assertEquals(entryDto.getDate(), getEntryDto.getDate());
+        Assert.assertEquals(entryDto.getPaid(), getEntryDto.getPaid());*/
+
+        //Entry verifyGetEntryPending = (Entry) entryService.getEntryPending("17/09/2021", BigDecimal.valueOf(4405.49), true);
+
+        Assertions.assertEquals(entries.getAmount(), entries.getAmount());
+        Assertions.assertEquals(entries.getDate(), entries.getDate());
+        Assertions.assertEquals(entries.getPaid(), entries.getPaid());
+
 
     }
 }

@@ -40,4 +40,9 @@ public class EntryDto {
 
     private Category category;
 
+    public EntryDto(BigDecimal amount, String date, Boolean paid) {
+        this.amount = amount;
+        this.date = date;
+        this.paid = paid;
+    }
 }
