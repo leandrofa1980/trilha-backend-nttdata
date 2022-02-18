@@ -2,9 +2,12 @@ package testes;
 
 import br.com.control.finances.domain.dto.EntryDto;
 import br.com.control.finances.domain.entities.Entry;
+import br.com.control.finances.infrastructure.exceptions.GetEntryListException;
+import br.com.control.finances.infrastructure.exceptions.GetEntryPendingException;
 import br.com.control.finances.infrastructure.mapper.EntryMapper;
 import br.com.control.finances.infrastructure.repository.EntryRepository;
 import br.com.control.finances.service.EntryService;
+import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -19,6 +22,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.validateMockitoUsage;
 import static org.mockito.Mockito.when;
 
 //@RunWith(SpringRunner.class)
@@ -39,8 +45,37 @@ public class TrilhaBackTestes {
     }
 
     @Test
-    public void whenGetEntryDependentsInformedThenCheckTheReturn(){
-        //given
+    public void whenParameterNullThenReturnException() throws GetEntryPendingException{
+
+        EntryService service = new EntryService();
+        //TrilhaBackBuilderTest builderTest = new TrilhaBackBuilderTest();
+
+        try {
+            service.getEntryPending(null, BigDecimal.valueOf(4405.49), true);
+        }
+        catch (GetEntryPendingException e){
+            assertThat(e.getMessage(), is("Parâmetros com valores errados"));
+        }
+    }
+
+    @Test
+    public void whenParameterEmptyThenReturnException(){
+        EntryService service = new EntryService();
+
+        try {
+            service.getEntryPending("", BigDecimal.valueOf(0), true );
+        }
+        catch (GetEntryListException ex){
+            assertThat(ex.getMessage(), is("Não existe os dados pelo parâmetro passado"));
+        }
+    }
+
+
+
+
+
+
+    //given
        /* EntryDto entryDto = TrilhaBackBuilderTest.builder().build().toEntryDto();
         Entry expectedReturnTest = entryMapper.dtoToEntity(entryDto);*/
 
@@ -50,37 +85,36 @@ public class TrilhaBackTestes {
         entryDto.setPaid(entryDto.getPaid());
         Entry newEntryTest = entryMapper.dtoToEntity(entryDto);*/
 
-        List<Entry> entryList = new ArrayList<>();
-        Entry entries = TrilhaBackBuilderTest.builder().build().entryPendentsList();
+    //List<Entry> entryList = new ArrayList<>();
+    //Entry entries = TrilhaBackBuilderTest.builder().build().entryPendentsList();
         /*entries.setDate(entries.getDate());
         entries.setAmount(entries.getAmount());
         entries.setPaid(entries.getPaid());*/
-        entryList.add(entries);
+    //entryList.add(entries);
 
-        //when
+    //when
         /*when(entryRepository.findByPaidOrAmountOrDate(entryDto.getPaid(),
                 entryDto.getAmount(),
                 entryDto.getDate()))
         .thenReturn(Collections.singletonList(expectedReturnTest));*/
 
-        when(entryRepository.findByPaidOrAmountOrDate(entries.getPaid(),
+        /*when(entryRepository.findByPaidOrAmountOrDate(entries.getPaid(),
                 entries.getAmount(),
                 entries.getDate()))
         .thenReturn(Collections.singletonList(entries));
-
-        //then
+*/
+    //then
        /* EntryDto getEntryDto = (EntryDto) entryService.getEntryPending("17/09/2021", BigDecimal.valueOf(4405.49), true);
 
         Assert.assertEquals(entryDto.getAmount(), getEntryDto.getAmount());
         Assert.assertEquals(entryDto.getDate(), getEntryDto.getDate());
         Assert.assertEquals(entryDto.getPaid(), getEntryDto.getPaid());*/
 
-        //Entry verifyGetEntryPending = (Entry) entryService.getEntryPending("17/09/2021", BigDecimal.valueOf(4405.49), true);
+    //Entry verifyGetEntryPending = (Entry) entryService.getEntryPending("17/09/2021", BigDecimal.valueOf(4405.49), true);
 
-        Assertions.assertEquals(entries.getAmount(), entries.getAmount());
+  /*      Assertions.assertEquals(entries.getAmount(), entries.getAmount());
         Assertions.assertEquals(entries.getDate(), entries.getDate());
         Assertions.assertEquals(entries.getPaid(), entries.getPaid());
+*/
 
-
-    }
 }

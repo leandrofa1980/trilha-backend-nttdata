@@ -28,11 +28,7 @@ public class Entry {
     @JoinColumn(name = "category")
     private Category category;
 
-    public Entry(Long id, String name, String description, String type, BigDecimal amount, String date, Boolean paid) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.type = type;
+    public Entry(BigDecimal amount, String date, Boolean paid) {
         this.amount = amount;
         this.date = date;
         this.paid = paid;

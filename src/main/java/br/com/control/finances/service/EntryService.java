@@ -101,7 +101,7 @@ public class EntryService {
         if (date == null || amount == null){
             throw new GetEntryPendingException("Parâmetros com valores errados");
         }
-        else if (date == "" || amount.equals(0)){
+        if (date == "" || amount.equals(0)){
             throw new GetEntryListException("Não existe os dados pelo parâmetro passado");
         }/*
         else {
