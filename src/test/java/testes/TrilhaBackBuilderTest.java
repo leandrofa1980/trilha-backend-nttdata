@@ -1,5 +1,6 @@
 package testes;
 
+import br.com.control.finances.domain.dto.EntryDto;
 import br.com.control.finances.domain.entities.Entry;
 import lombok.Builder;
 
@@ -12,7 +13,7 @@ public class TrilhaBackBuilderTest {
     private BigDecimal amount = BigDecimal.valueOf(4410.49);
 
     @Builder.Default
-    private String date = "17/09/2021";
+    private String date = "";
 
     @Builder.Default
     private Boolean paid = true;
@@ -25,6 +26,12 @@ public class TrilhaBackBuilderTest {
         this.amount = amount;
         this.date = date;
         this.paid = paid;
+    }
+
+    public EntryDto toEntryDto(){
+        return new EntryDto(amount,
+                date,
+                paid);
     }
 
     public Entry entryPendentsList(){

@@ -30,7 +30,7 @@ public class EntryService {
     private CategoryRepository categoryRepository;
 
     @Autowired
-    private EntryMapper entryMapper;
+    private EntryMapper entryMapper = EntryMapper.INSTANCE;
 
     public List<Entry> findAllPaid(Boolean paid){
         if (paid != null) {
