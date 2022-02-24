@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public class TrilhaBackBuilderTest {
 
     @Builder.Default
-    private BigDecimal amount = BigDecimal.valueOf(4410.49);
+    private String amount = "4410.49";
 
     @Builder.Default
     private String date = "";
@@ -22,7 +22,7 @@ public class TrilhaBackBuilderTest {
     public TrilhaBackBuilderTest() {
     }
 
-    public TrilhaBackBuilderTest(BigDecimal amount, String date, Boolean paid) {
+    public TrilhaBackBuilderTest(String amount, String date, Boolean paid) {
         this.amount = amount;
         this.date = date;
         this.paid = paid;

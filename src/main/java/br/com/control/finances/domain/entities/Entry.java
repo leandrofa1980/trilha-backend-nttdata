@@ -1,5 +1,6 @@
 package br.com.control.finances.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,15 +21,12 @@ public class Entry {
     private String name;
     private String description;
     private String type;
-    private BigDecimal amount;
+    private String amount;
     private String date;
     private Boolean paid;
+    private Long categoryId;
 
-    @ManyToOne
-    @JoinColumn(name = "category")
-    private Category category;
-
-    public Entry(BigDecimal amount, String date, Boolean paid) {
+    public Entry(String amount, String date, Boolean paid) {
         this.amount = amount;
         this.date = date;
         this.paid = paid;

@@ -29,8 +29,7 @@ public class EntryDto {
     private String type;
 
     @NotNull(message = "{amount.not.null}")
-    @Min(value = 0)
-    private BigDecimal amount;
+    private String amount;
 
     @NotNull(message = "{date.not.null}")
     private String date;
@@ -38,9 +37,10 @@ public class EntryDto {
     @NotNull(message = "{paid.not.null}")
     private Boolean paid;
 
-    private Category category;
+    @NotNull(message = "{categoryId.not.null}")
+    private Long categoryId;
 
-    public EntryDto(BigDecimal amount, String date, Boolean paid) {
+    public EntryDto(String amount, String date, Boolean paid) {
         this.amount = amount;
         this.date = date;
         this.paid = paid;

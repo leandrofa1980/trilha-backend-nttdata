@@ -19,9 +19,9 @@ import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Qualifier("controller")
+/*@Qualifier("controller")*/
 @RestController
-@RequestMapping("/entries")
+@RequestMapping(path = "/entries")
 public class EntryController {
 
     @Autowired
@@ -31,23 +31,23 @@ public class EntryController {
     private EntryRepository entryRepository;
 
     @GetMapping
-    public ResponseEntity<List<Entry>> findAll(@RequestParam(required = false) Boolean paid){
+    public ResponseEntity<List<Entry>> getAll(@RequestParam(required = false) Boolean paid){
         return ResponseEntity.ok().body(entryService.findAllPaid(paid));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Entry> readById(@PathVariable("id") Long id){
+    public ResponseEntity<Entry> getById(@PathVariable("id") Long id){
         Entry readById = entryService.findById(id);
         return ResponseEntity.ok().body(readById);
     }
 
-    @GetMapping("/dashboard")
+   /* @GetMapping("/dashboard")
     public ResponseEntity<List<ChartDto>> amount(){
         return ResponseEntity.ok(entryService.amount());
     }
-
+*/
     @PostMapping("/create")
-    public ResponseEntity<Object> createEntry(@Valid @RequestBody EntryDto entryDto) {
+    public ResponseEntity<Object> create(@Valid @RequestBody EntryDto entryDto) {
         Entry create = entryService.validateCategoryById(entryDto);
         if(create == null){
             return ResponseEntity.badRequest().body("Categoria não existe");
@@ -56,13 +56,13 @@ public class EntryController {
     }
 
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Entry> update(@Valid @PathVariable("id") Long id, @RequestBody EntryDto entryDto){
         return ResponseEntity.ok(entryService.update(id, entryDto));
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
         entryService.delete(id);
         return ResponseEntity.noContent().build();
     }

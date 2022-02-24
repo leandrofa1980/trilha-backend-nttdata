@@ -43,13 +43,13 @@ public class EntryService {
         Optional<Entry> idRead = entryRepository.findById(id);
         return idRead.get();
     }
-
+/*
     public Optional<Category> byIdCategory(Long id){
         return categoryRepository.findById(id);
-    }
+    }*/
 
     public Entry validateCategoryById(EntryDto entryDto) {
-        if (categoryRepository.findById(entryDto.getCategory().getId()).isPresent()){
+        if (categoryRepository.findById(entryDto.getCategoryId()).isPresent()){
             return entryRepository.save(entryMapper.dtoToEntity(entryDto));
         }
         return null;
@@ -74,13 +74,13 @@ public class EntryService {
         entryRepository.deleteById(id);
     }
 
-    public List<ChartDto> amount(){
+/*    public List<ChartDto> amount(){
         List<ChartDto> listAmount = new ArrayList<>();
         List<Category> newListCategory = categoryRepository.findAll();
         newListCategory.forEach(category -> listAmount.add(new ChartDto(category.getName(),
                 category.getEntries().stream()
                         .map(Entry::getAmount)
-                        .reduce(BigDecimal.ZERO, BigDecimal::add)))); 
+                        .reduce(BigDecimal.ZERO, BigDecimal::add))));*/
         /*BigDecimal sum = BigDecimal.ZERO;
         for(int i = 0; i <= newListCategory.size()-1; i++){
             List<Entry> newListEntry = newListCategory.get(i).getEntries();
@@ -90,8 +90,8 @@ public class EntryService {
             }
             listAmount.add(new ChartDto(newListCategory.get(i).getName(), sum));
         }*/
-        return listAmount;
-    }
+        //return listAmount;
+   // }
 
     public Integer calculaMedia(Integer x, Integer y){
         return x/y;
