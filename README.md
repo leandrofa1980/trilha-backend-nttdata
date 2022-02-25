@@ -643,7 +643,7 @@ public class AdicaoTeste {
 
 ### Objetivo
 
-Praticar o processo de integração, e entender a importancia de seguirmos à risca os contratos, entender a relevãncia de mudar uma letra ou alterar um campo.
+Praticar o processo de integração, e entender a importancia de seguirmos à risca os contratos, entender a relevância de mudar uma letra ou alterar um campo.
 
 
 
