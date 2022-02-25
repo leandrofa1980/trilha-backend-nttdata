@@ -46,7 +46,7 @@ public class EntryController {
         return ResponseEntity.ok(entryService.amount());
     }
 */
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<Object> create(@Valid @RequestBody EntryDto entryDto) {
         Entry create = entryService.validateCategoryById(entryDto);
         if(create == null){

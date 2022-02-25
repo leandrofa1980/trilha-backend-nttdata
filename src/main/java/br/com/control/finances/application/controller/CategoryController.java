@@ -42,7 +42,7 @@ public class CategoryController {
         return ResponseEntity.ok().body(readById);
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<Category> create(@Valid @RequestBody CategoryDto category){
         return ResponseEntity.ok().body(categoryService.insert(category));
     }
