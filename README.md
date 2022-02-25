@@ -701,6 +701,42 @@ V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 2? S
 - Sim.
 
 
+#### c) Desafio 3 - HTTP, REST e Controller:
+
+I. Qual o objetivo da camada Controller?
+
+- É na camada controller que temos a comunicação com o frontend, ela é a intermediária entre aa camadas de apresentação e a camada de regra de negócios.
+
+II. No que os padrões REST nos auxiliam?
+
+- Em tornar a comunicação entre sistemas de forma organizada, com a arquitetura REST os clientes enviam solicitações para recuperar ou modificar recursos e o servidor enviam respostas para essas solicitações.
+
+III. Quais métodos HTTP utilizamos para montar um CRUD?
+
+- POST
+- GET
+- PUT
+- DELETE
+
+IV. Qual a diferença entre as annotations @PathVariable, @RequestParam, @RequestBody? E com quais métodos HTTP elas podem ser utilizadas respectivamente?
+
+- @PathVariable - é usado para obter objetos individuais ou dados extraidos do caminho da URL, em resumo quando o valor da variável é passada diretamente na URL.
+
+- @RequestParam - Usado para fins de filtragem, passamos os parâmetros que queremos filtrar por URL, eles são parte integrante da URL por esse notivo devem ser capturados utilizando @RequestParam.
+
+- @RequestBody - Indica que um parâmetro deve ser vinculado ao corpo da solicitação HTTP, o @RequestBody é usado para que o corpo da solicitação seja lido e desserializado em um objeto.
+
+V. Para que serve ResponseEntity?
+
+Retorna a resposta completa, incluindo cabeçalhos HTTP e corpo, usamos também para detalhar no corpo da resposta erros específicos.
+
+VI. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 3? Se não, justifique;
+
+- Sim.
+
+
+
+
 
 
 
