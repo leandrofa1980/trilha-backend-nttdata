@@ -636,7 +636,6 @@ public class AdicaoTeste {
 - [devmedia.com.br/exemplo/documentacao-junit](https://www.devmedia.com.br/exemplo/documentacao-teste-unitario/84?parte=25)
 - [devmedia.com.br/exemplo/documentacao-teste-unitario](https://www.devmedia.com.br/exemplo/documentacao-teste-unitario/84?parte=10)
 
-
 ---
 
 <h2>Desafio 13</h2>
@@ -644,6 +643,62 @@ public class AdicaoTeste {
 ### Objetivo
 
 Praticar o processo de integração, e entender a importancia de seguirmos à risca os contratos, entender a relevãncia de mudar uma letra ou alterar um campo.
+
+---
+
+<h2>Desafio 14</h2>
+
+### Objetivo
+
+Sintetizar os conhecimentos adquiridos ao longo desse percurso.
+
+#### a) Desafio 1 - Git:
+
+I. Dê 2 exemplos de situações onde é necessário utilizar o merge:
+
+- Quando queremos fazer alterações sem afetar o código principal e testa-las para verificar se funcionam corretamente, podemos criar uma nova branch(ramo), tudo ocorrendo bem, podemos juntar tudo no código principal utilizando o merge do git para incorporar as alterações.
+- Em projetos com equipes de desenvolvedores cada um pode ter de uma cópia do projeto para desenvolver, finalizando o projeto ou sua parte no desenvolvimento utilizamos o merge para unificar todo o projeto.
+
+II. Com qual objetivo realizamos o commit?
+
+- Para criar pontos na história do desenvolvimento, commits são peças individuais da história armazenadas pelo repositório, com o atributo -m acrescentamos uma mensagem para identificar o que foi feito no desenvolvimento, uma informação relevante é que em cada commit o git armazena quem fez o commit utilizando do e-mail e do nome do usúario.
+
+III. Qual a diferença entre:
+
+- git add -all: Atualiza o índice não apenas onde possui um arquivo correspondente mas também onde o índice já possui uma entrada.
+- git add -u: Atualiza o índice exatamente onde já possui uma entrada correspondente, remove e modifica as entradas de índice, mas não adiciona novos arquivos.
+- git add -A: Quando não passamos um caminho específico, atualiza todos os arquivos de todas as branch.
+- git add .: Atualiza todos os arquivos modificados e novos.
+
+IV. Qual é a ordem dos comandos para subir novas atualizações, verificando se existem alterações a serem recebidas?
+
+- git status para verificar novas alterações git add para adicionar as novas atualizações no repositório local, git commit para identificar as atualizações feitas e git push para subir no repositório remoto.
+
+V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 1? Se não, justifique;
+
+- Sim.
+
+#### b) Desafio 2 - POO e Entity:
+
+I. Qual a finalidadde da camada Entity?
+
+- É onde as funcionalidades são designadas aos conceitos aos quais elas pertencem, determinando os atributos das classes, getters e setters e métodos especializados para manipular atributos.
+
+II. Para você, por que acha que seguimos a programação orientada a objetos?
+
+- Códigos feitos no paradigma estruturados tendem a apresentar uma grande quantidade de comandos, com programação orientação a objetos organizamos dados e operações na forma de classes, temos mais legibilidade do código e facilidade de manutenção.
+
+III. Qual é o ideal por trás de utilizar os métodos getters e setters?
+
+- Os getters e setters nos permite manter o conceito de encapsulamento, pois com eles podemos acessar os valores de fora do deu pacote, levando em consideração a proteção de alguns atributos que podem ou não ser mutáveis.
+
+IV. Qual o propósito de construtor em uma classe? Podemos criar uma classe sem construtor?
+
+- É responsavel por criar o objeto em memória, ele instancia a classe utilizando a palavra reservada 'new', não podemos criar uma classe sem construtores eles são obrigatórios.
+
+V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 2? Se não, justifique;
+
+- Sim.
 
 
 
