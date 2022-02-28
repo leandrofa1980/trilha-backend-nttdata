@@ -761,6 +761,47 @@ V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 4? S
 
 - Sim
 
+#### e) Desafio 5 - Service:
+
+I. Qual a finalidade da camada Service?
+
+- É na Service que ficam as regras de negócio, operações diversas como validação, verificação, acesso ao repositório, nela recebemos as requisições do controller, quando bem implementada é de fácil manutenção e mudanças em relação a evoluçao da regra de negócio.
+
+II. Qual o sentido de um método ter apenas um propósito?
+
+- Ter um código mais limpo e de fácil manutenção, esse é um conceito SOLID princípio da responsabilidade única, onde uma classe deve ter um, e somente um, motivo para mudar.
+
+III. Qual a diferença entre um método void e métodos tipados?
+
+- Quando um método executa apenas o código que tem dentro do seu bloco, sem retornar nenhum resultado, é identificado pela palavra-chave void;
+- Métodos que possuem um tipo de dados incorporado na declaração e apresentam em seu bloco a palavra reservada return está informando que terá um retorno do mesmo tipó de dados com a qual foi declarado.
+
+IV. É normal um serviço chamar outro?
+
+- Service interagem com outros services, sem se importar quando está sendo chamado.
+
+V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 5? Se não, justifique;
+
+- Sim
+
+#### f) Desafio 6 - DTO:
+
+I. Quais problemas conseguimos resolver utilizando a camada DTO?
+
+- Transferir dados de um local para outro sem lógica de negócios, determinar o que pode ser visto na camada de apresentação evitando que dados de interesse exclusivos fiquem expostos, otimização do tráfego de dados.
+
+II. Qual a diferença de realizarmos o "de para" utilizando constructor ou getters e setters?
+
+- Construtores devem passar os valores mínimos que uma classe precisa e os getteres and setters são o meio para buscar as informações contidas na classe, vale ressaltar que só se deve criar getters e setters quando eles realmente são úteis. Utilizando esses métodos estamos escondendo dados para expor o comportamento.
+
+III. No que a utilização do Mapper nos auxilia? Achou fácil a implementação?
+
+-  Ele usa uma abordagem baseada em convenção para mapear objetos enquanto fornece uma API segura de refatoração simples para lidar com casos de uso específicos.
+
+IV. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 6? Se não, justifique;
+
+- Sim
+
 
 
 
