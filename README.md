@@ -806,7 +806,7 @@ IV. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 6? 
 
 I. Qual é a forma de validar os dados de uma requisição sem utilizar @Valid?
 
--
+- Uma forma é isolar cada regra de validação em uma classe separada, com uma interface genérica que contém a assinatura de um método responsável pela validação, cada classe deverá implementar a interface passando por parâmetro o tipo do objeto que será validado, também precisamos implementar um método escrevendo dentro dele a lógica de validação, em uma classe vamos criar um método que irá receber por parâmetro um validator e o objeto a ser validado, por fim em nosso método salvar, podemos pedir para ele validar.
 
 II. Para que serve um ENUM? Cite exemplos;
 
@@ -827,16 +827,39 @@ III. Como criamos um custom validator? E qual o objetivo de criar um?
 - No Controller que recebe nosso objeto, para que a validação tenha efeito adicionamos a anotação @Valid;
 - Por fim criamos um arquivo properties para buscar as mensagens que serão exebidas.
 
-Com a criação da validação se algum erro ou parâmetro inválido surgirem, será lançado uma exceção e mostrada para o cliente final, com uma mensagem mais padronizada.
+Com a criação da validação se algum erro ou parâmetro inválido surgirem, será lançado uma mensagem padronizada e mostrada para o cliente final.
 
 IV. Qual foi a diferença entre utilizar for e streams no desafio 6?
 
-- Um código mais legível e conciso além de poder aumenta sua produtividade, com o for corremos mais riscos de gerar bug inesperados, a partir do Java 8 com criação de funções lambda foi possível criar uma nova forma de iterar com coleções utilizando o stream podemos fazer muito mais do que com o for.
+- Um código mais legível e conciso além de poder aumenta sua produtividade, com o for corremos mais riscos de gerar bug inesperados, a partir do Java 8 com criação de funções lambda foi possível criar uma nova forma de iterar com coleções utilizando o stream, podemos fazer muito mais do que com o for.
 
 V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 7? Se não,
 justifique;
 
 - Sim
+
+#### h) Desafio 8 - Tratamento de exceptions:
+
+I. Qual a finalidade de trata-las?
+
+- Tratamos as exceções para melhor entendimento do que acorreu com o código, mostrando informações do erro, seu tipo, entregando para o cliente final uma melhor explicação da causa da exceção. A casos que exceções são necessárias impedidno que o código pare de funcionar.
+
+II. Como as descobrimos?
+
+- Quando um programa é interrompido do seu fluxo normal é lançado uma exceção que contém informações sobre o erro por meio de mensagens.
+
+III. Como fazemos para estourar um exception em uma determinada linha?
+
+- Por meio da instrução throw que lança uma exceção definida.
+
+IV. Qual é a melhor forma de implementarmos nosso controle de exceções?
+
+- Criando uma classe expecífica para tratar exeções, podemos escrever nossas próprias classes e instanciá-las com cada exceção.
+
+V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 8? Se não,
+justifique:
+
+- Sim.
 
 
 
