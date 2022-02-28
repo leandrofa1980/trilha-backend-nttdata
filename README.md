@@ -734,6 +734,33 @@ VI. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 3? 
 
 - Sim.
 
+#### d) Desafio 4 - JPA e Repository:
+
+I. Qual é o propósito da camada Repository?
+
+- Realizar o isolamento entre a camada de acesso a dados de uma aplicação, usando injeção de dependênciae proporcionando uma visão mais orientada a objetos, em outras palavras é uma interface de consulta e manipulação em coleção de dados.
+
+II. De maneira prática como funciona a injeção do Repository? E qual a relação com Autowired?
+
+- Instanciar um objeto repository que tem várias operações para utilizarmos na aplicação;
+- Para ter uma instância de outra classe no Spring Boot é preciso usar a anotação @Autowired ele resolve a dependência, ele vai obter uma instância da classe repository no nosso caso.
+
+III. Quais são as facilidades em utilizar JPA?
+
+- Conversão entre o modelo orientado a objetos e o paradigma relacional do banco de dados;
+- Não precisa criar códigos SQL para salvar, alterar ou remover registros do banco de dados;
+- A aplicação não fica presa a um banco de dados sendo simples a troca
+
+IV. Quais são os passos para configurar um banco de dados em um projeto Spring?
+
+- O primeiro passo é incluir as dependencias no pom.xml do JPA e do banco de dados que vamos utilizar na aplicação;
+- Configurar o arquivo application.properties com as configuraçoes do banco de dados, onde colocamos uma URL , username, password, alguns bancos precisam ter o path do navegador;
+- Fazer o mapeamento nas entidades fazendo o uso de anotações que instruem o JPA de como ele vai converter os objetos para o modelo relacional do banco de dados;
+
+V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 4? Se não, justifique;
+
+- Sim
+
 
 
 
