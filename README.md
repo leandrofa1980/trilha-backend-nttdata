@@ -802,6 +802,42 @@ IV. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 6? 
 
 - Sim
 
+#### g) Desafio 7 - Manipulação de dados:
+
+I. Qual é a forma de validar os dados de uma requisição sem utilizar @Valid?
+
+-
+
+II. Para que serve um ENUM? Cite exemplos;
+
+- Representam um conjunto fixo de constantes(static, final), pode ser definido usando a palavra chave 'enum', tornam o código mais explícito, mais legível, e menos vulnerével a erros de programação. Exemplo:
+  ```bash
+      public enum Turno {
+          MANHA,
+          TARDE,
+          NOITE;
+      }
+  ```
+
+III. Como criamos um custom validator? E qual o objetivo de criar um?
+
+- Primeiro é necessário das dependências do Spring Boot starter e Spring Boot validation no pom.xml;
+- Criar uma annotation para validação, com a mensagem que será devolvida para o usuário;
+- É necessário criar uma classe que contém a regra de negócio da validação;
+- No Controller que recebe nosso objeto, para que a validação tenha efeito adicionamos a anotação @Valid;
+- Por fim criamos um arquivo properties para buscar as mensagens que serão exebidas.
+
+Com a criação da validação se algum erro ou parâmetro inválido surgirem, será lançado uma exceção e mostrada para o cliente final, com uma mensagem mais padronizada.
+
+IV. Qual foi a diferença entre utilizar for e streams no desafio 6?
+
+- Um código mais legível e conciso além de poder aumenta sua produtividade, com o for corremos mais riscos de gerar bug inesperados, a partir do Java 8 com criação de funções lambda foi possível criar uma nova forma de iterar com coleções utilizando o stream podemos fazer muito mais do que com o for.
+
+V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 7? Se não,
+justifique;
+
+- Sim
+
 
 
 
