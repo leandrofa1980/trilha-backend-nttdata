@@ -884,6 +884,55 @@ justifique;
 
 - Sim.
 
+#### j) Desafio 10 - Spring:
+
+I. Qual a diferença entre Java e Spring?
+
+- Java é uma linguagem de programação orientada a objetos, usada para desenvolvimento de software e aplicações web.
+- Spring é uma estrutura de aplicativos de código aberto usado amplamente pela comunidade Java.
+
+II. É possível utilizar Spring Data sozinho?
+
+- Não segundo a documentação do Spring ele é um projeto guarda-chuva que contém muitos subprojetos específico para cada banco de dados, exemplo Spring Data MongoDB, Spring Data JPA, entre outros.
+
+III. É possível utilizar Spring Boot, Spring Data e Spring Security em apenas um projeto?
+Se sim, como é feito a integração?
+
+- Sim, por meio das dependências implementadas no pom.xml, e utilizando de anotações referente aos modulos Spring.
+
+IV. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 10? Se
+não, justifique;
+
+- Sim.
+
+#### k) Desafio 11 - Libs:
+
+I. Cite 5 libs que utilizou durante a trilha e suas respectivas funcionalidades;
+
+- Sweggar - Utilizamos para projetar, construir, documentar e comsumir APIs REST;
+- Lombok - Utilizamos para redução de código por meio de anotações, com ele automatizamos a criação de getters, setters e construtotres ;
+- Junit - Utilizamos o Junit paraescrever testes em nossa aplicação, ele fornece anotações e declara classes para escrever testes;
+- Jackson - É usado para transferir dados em formato Json, ele também aceita outros formatos como Avro, XML, YAML, etc;
+- Mokito - Utilizada para simular o comportamento de outras classes ou serviçoes externos.
+
+II. Qual a diferença entre uma lib e um driver?
+
+- Lib é uma coleção de subprogramas utilizada no desenvolvimento de software.
+- Driver é basicamente arquivos .jar que contém os meios para fazer a comunicação com o banco de dados.
+
+III. Existe limite de libs por projeto?
+
+- Não
+
+IV. Por que utilizar um gerenciador de dependências?
+
+- Para facilitar na realização de automação e gerenciamento das dependências de um projeto, o desenvolvedor pode focar no desenvolvimento da aplicação.
+
+V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 11? Se
+não, justifique;
+
+- Sim.
+
 
 
 
