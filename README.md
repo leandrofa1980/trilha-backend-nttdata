@@ -861,6 +861,29 @@ justifique:
 
 - Sim.
 
+#### i) Desafio 9 - Patterns, SOLID e Arquitetura:
+
+I. O que é Singleton Pattern?
+
+- É um padrão que permiti criar objetos únicos para os quais há apenas uma instância, este padrão oferece um ponto de acesso a ela, ou seja, gerencia a própria instância dela além de evitar que qualquer outra classe crie uma instância dela.
+
+II. O que significa a letra D de SOLID e como se aplica na camada de Repository?
+
+- Dependency Inversion Principle(Princípio da inversão de dependência) - Esse princípio fala que os modulos de alto nível não podem depender dos de baixo nível, ambos deve depender de abstrações e as abstrações não podem depender de detalhes. Levando em consideração  o texto o modulo de alto nível tem envolvimento com a regra de negócio, o de baixo nível são as tarefas internas que a aplicação faz, na Repository se aplica pois estamos desacoplando modulos utilizando esse princípio.
+
+III. Qual o objetivo das camadas?
+
+- Organizar asa responsabilidades, uma das vantagens no uso de camadas é poder isolar a complexidade e os detalhes de uma camada para as demais e dar um propósito bem definido a cada camada de forma que a mesma possa ser reutilizável por um nível mais alto ou até mesmo substituível.
+
+IV. Qual arquitetura é melhor DDD, Hexagonal ou Clean?
+
+- Claro que cada arquitetura tem sua particularidade e forma de representar e aplicar questões de organização, isolamento e dependência entre camadas, na minha opnião a Clean archtecture por ser uma arquitetura que proposiona maior organização das responsabilidades do código.
+
+V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 9? Se não,
+justifique;
+
+- Sim.
+
 
 
 
