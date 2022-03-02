@@ -933,7 +933,59 @@ não, justifique;
 
 - Sim.
 
+#### l) Desafio 12 - Testes unitários:
 
+I. Por que DEVOPS exige uma porcentagem de cobertura mínima nos projetos?
+
+- Para garantir segurança, maneiras colaborativas de trabalhar, com DevOps conectamos aplicações legadas a uma infraestrutura e aplicações modernas, aceleramos osprocessos necessários e capaz de gerar valor para o usúario.
+
+II. Qual o objetivo de utilizar Mockito? Dê um exemplo;
+
+- Como comentado anteriormente utilizamos para simular o comportamento de classes e métodos.
+
+ ```bash
+	@ExtendWith(MockitoExtension.class)
+	public class TrilhaBackTestes {
+
+   	@Mock
+    	private EntryRepository entryRepository;
+
+	@InjectMocks
+	private EntryService entryService;
+ ```
+
+III. O que é o Sonar? E qual é o seu papel?
+
+- Sonar é um projeto open source que visa avaliar a qualidade de códigos. Para isso ele avalia a arquitetura de design, número de comentários, regras do Java, alto nível de complexidade, código duplicado, cobertura de testes no código, etc. Além de possuir um número bastente extenso de puglins.
+- Tem o papel de oferecer ferramentas necessárias para escrever um código limpo e seguro.
+
+IV. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 12? Se
+não, justifique;
+
+- Sim.
+
+#### m) Desafio 13 - Integração:
+
+I. Como foi o processo de integração?
+
+- Primeiro precisei instalar o NodeJs, clonar o código do front, seguir o README do front, fazer ajustes nos endpoints do código e alterar alguns nomes no front para conseguir rodar a aplicação.
+
+II. Quais foram as principais dificuldades?
+
+- Por ter pouco conhecimento com aplicações frontend para entender a instalação e como essa integração funciona.
+
+III. Obteve algum erro de CORS?
+
+- Sim.
+
+IV. O que é CORS?
+
+- CORS (Cross-origin Resource Sharing) é um mecanismo utilizado pelos navegadores para compartilhar recursos entre diferentes origens. CORS é uma espicíficação do W3C e faz uso de headers do HTTP para informar aos navegadores se determinado recurso pode ser ou não acessado.
+
+V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 13? Se
+não, justifique;
+
+- Sim.
 
 
 
